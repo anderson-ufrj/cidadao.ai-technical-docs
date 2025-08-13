@@ -11,9 +11,9 @@ const config: Config = {
 
   // Configurações de produção
   url: 'https://anderson-ufrj.github.io',
-  baseUrl: '/cidadao.ai-backend/',
+  baseUrl: '/cidadao.ai-technical-docs/',
   organizationName: 'anderson-ufrj',
-  projectName: 'cidadao.ai-backend',
+  projectName: 'cidadao.ai-technical-docs',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -44,7 +44,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/anderson-ufrj/cidadao.ai-backend/tree/main/docs/',
+          editUrl: 'https://github.com/anderson-ufrj/cidadao.ai-technical-docs/tree/main/docs/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
           showLastUpdateAuthor: true,
@@ -58,7 +58,7 @@ const config: Config = {
             type: 'all',
             copyright: `Copyright © ${new Date().getFullYear()} Anderson Henrique da Silva`,
           },
-          editUrl: 'https://github.com/anderson-ufrj/cidadao.ai-backend/tree/main/docs/',
+          editUrl: 'https://github.com/anderson-ufrj/cidadao.ai-technical-docs/tree/main/docs/',
           remarkPlugins: [remarkMath],
           rehypePlugins: [rehypeKatex],
         },
@@ -118,7 +118,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/anderson-ufrj/cidadao.ai-backend',
+          href: 'https://github.com/anderson-ufrj/cidadao.ai-technical-docs',
           label: '⚡ GitHub',
           position: 'right',
         },
