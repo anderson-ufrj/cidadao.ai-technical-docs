@@ -55,7 +55,7 @@
     "brasil"
   ],
   "author": "Anderson Henrique da Silva <andersonhs27@gmail.com>",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "homepage": "https://github.com/anderson-ufrj/cidadao.ai-backend",
   "repository": {
     "type": "git",

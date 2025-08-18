@@ -216,7 +216,7 @@ const config: Config = {
         },
       ],
       copyright: `© ${new Date().getFullYear()} <strong>Anderson Henrique da Silva</strong> — Instituto Federal do Sul de Minas Gerais.<br/>
-                  Licenciado sob <a href="https://opensource.org/licenses/Apache-2.0" target="_blank">Apache License 2.0</a>. 
+                  Licenciado sob <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>. 
                   Construído com ❤️ e <a href="https://docusaurus.io/" target="_blank">Docusaurus</a>.`,
     },
 

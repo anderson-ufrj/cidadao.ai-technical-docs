@@ -1,0 +1,29 @@
+# robots.txt para Cidadão.AI Technical Documentation
+# Docusaurus site - Controla indexação pelos motores de busca
+
+User-agent: *
+Allow: /
+
+# Permitir indexação de toda a documentação técnica
+Allow: /docs/
+Allow: /blog/
+Allow: /img/
+Allow: /assets/
+
+# URLs importantes para SEO
+Sitemap: https://anderson-ufrj.github.io/cidadao.ai-technical-docs/sitemap.xml
+
+# Crawl delay para respeitar recursos do servidor
+Crawl-delay: 1
+
+# Bloquear arquivos de desenvolvimento
+Disallow: /.docusaurus/
+Disallow: /node_modules/
+Disallow: /build/
+Disallow: /*.log$
+
+# Permitir acesso aos arquivos de configuração públicos
+Allow: /manifest.json
+
+# Informações de contato para questões técnicas
+# Contact: https://github.com/anderson-ufrj/cidadao.ai-technical-docs/issues

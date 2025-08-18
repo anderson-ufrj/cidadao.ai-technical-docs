@@ -1,0 +1,8 @@
+Contact: mailto:security@cidadao.ai
+Contact: mailto:andersonhs27@gmail.com
+Expires: 2026-01-24T23:59:59.000Z
+Encryption: https://keys.openpgp.org/search?q=security@cidadao.ai
+Acknowledgments: https://github.com/anderson-ufrj/cidadao.ai-technical-docs/blob/main/SECURITY.md
+Preferred-Languages: pt-BR, en-US
+Canonical: https://anderson-ufrj.github.io/cidadao.ai-technical-docs/.well-known/security.txt
+Policy: https://github.com/anderson-ufrj/cidadao.ai-technical-docs/blob/main/SECURITY.md

@@ -5,7 +5,7 @@
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-v3.6.3-brightgreen?logo=docusaurus)](https://docusaurus.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![KaTeX](https://img.shields.io/badge/KaTeX-Math-orange?logo=latex)](https://katex.org/)
-[![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -404,7 +404,7 @@ npm start
 
 ## 📄 Licença
 
-Este projeto está licenciado sob **Apache License 2.0**. Veja o arquivo [LICENSE](../LICENSE) para detalhes.
+Este projeto está licenciado sob **MIT License**. Veja o arquivo [LICENSE](../LICENSE) para detalhes.
 
 ---
 

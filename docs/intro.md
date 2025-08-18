@@ -128,7 +128,7 @@ Este sistema multi-agente foi concebido com o propósito de **democratizar o ace
 
 ### 🔐 Licenças e Direitos
 
-- **Código-fonte** licenciado sob **Apache License 2.0**
+- **Código-fonte** licenciado sob **MIT License**
 - Todos os modelos e bibliotecas de terceiros respeitam suas respectivas licenças
 - Os dados públicos utilizados seguem a **Lei de Acesso à Informação (Lei nº 12.527/2011)**
 
