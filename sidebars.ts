@@ -72,6 +72,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: '🔐 Segurança & Autenticação',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'security/overview',
+        'security/oauth-configuration',
+      ],
+    },
+    {
+      type: 'category',
       label: '🤖 Machine Learning',
       collapsible: true,
       collapsed: true,
