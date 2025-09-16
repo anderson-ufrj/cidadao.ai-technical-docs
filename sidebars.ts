@@ -83,6 +83,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: '🚀 Deploy & Configuração',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'deployment/environment-variables',
+        'deployment/deployment-guide',
+      ],
+    },
+    {
+      type: 'category',
       label: '🤖 Machine Learning',
       collapsible: true,
       collapsed: true,
