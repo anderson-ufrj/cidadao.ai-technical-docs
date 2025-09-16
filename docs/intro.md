@@ -98,15 +98,14 @@ Este sistema multi-agente foi concebido com o propósito de **democratizar o ace
 ### 👨‍💻 Autor
 
 <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
-  <img src="/cidadao.ai-backend/img/author.png" width="80" height="80" style={{borderRadius: '50%', border: '3px solid var(--cidadao-primary)'}} />
+  <img src="/cidadao.ai-technical-docs/img/author.png" width="80" height="80" style={{borderRadius: '50%', border: '3px solid var(--cidadao-primary)'}} />
   <div>
     <strong>Anderson Henrique da Silva</strong><br/>
     <em>Bacharelando em Ciência da Computação | Engenheiro de Sistemas de IA</em><br/>
     <div style={{marginTop: '0.5rem'}}>
       <a href="https://github.com/anderson-ufrj" target="_blank">🔗 GitHub</a> | 
       <a href="https://huggingface.co/neural-thinker" target="_blank"> 🔗 Hugging Face</a> | 
-      <a href="https://linkedin.com/in/anderson-h-silva95" target="_blank"> 🔗 LinkedIn</a><br/>
-      <a href="mailto:andersonhs27@gmail.com">📧 andersonhs27@gmail.com</a>
+      <a href="https://linkedin.com/in/anderson-h-silva95" target="_blank"> 🔗 LinkedIn</a>
     </div>
   </div>
 </div>
