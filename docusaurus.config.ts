@@ -109,7 +109,7 @@ const config: Config = {
           label: '📚 Documentação',
         },
         {
-          to: '/blog',
+          href: 'https://cidadao-ai-hub.vercel.app/',
           label: '📰 Blog',
           position: 'left'
         },
@@ -178,6 +178,10 @@ const config: Config = {
             {
               label: 'Frontend Demo',
               href: 'https://cidadao-ai-frontend.vercel.app',
+            },
+            {
+              label: 'Blog & Hub',
+              href: 'https://cidadao-ai-hub.vercel.app',
             },
             {
               label: 'GitHub Backend',
