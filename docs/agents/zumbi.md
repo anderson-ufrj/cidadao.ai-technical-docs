@@ -161,8 +161,8 @@ response = await zumbi.process(message)
 | Métrica | Valor Atual | Meta | Status |
 |---------|-------------|------|--------|
 | Taxa de Detecção | 87% | >85% | ✅ |
-| Falsos Positivos | 4.2% | <5% | ✅ |
-| Tempo de Resposta (p95) | 1.8s | <2s | ✅ |
+| Falsos Positivos | 4.2% | &lt;5% | ✅ |
+| Tempo de Resposta (p95) | 1.8s | &lt;2s | ✅ |
 | Cobertura de Testes | 94% | >90% | ✅ |
 | Precisão | 91% | >90% | ✅ |
 

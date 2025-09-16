@@ -278,7 +278,7 @@ async def _manage_memory_size(self):
 ### Indicadores de Desempenho
 | Métrica | Valor | Meta | Status |
 |---------|-------|------|--------|
-| Latência de Recuperação | 45ms | <100ms | ✅ |
+| Latência de Recuperação | 45ms | &lt;100ms | ✅ |
 | Taxa de Cache Hit | 87% | >80% | ✅ |
 | Precisão Semantic Search | 91% | >85% | ✅ |
 | Capacidade Total | 10K memórias | - | ✅ |

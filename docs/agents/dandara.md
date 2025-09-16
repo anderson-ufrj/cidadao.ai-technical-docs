@@ -298,8 +298,8 @@ dandara:
 |---------|-------|------|--------|
 | Precisão de Detecção | 89% | >85% | ✅ |
 | Cobertura de Análise | 92% | >90% | ✅ |
-| Tempo de Processamento | 3.2s | <5s | ✅ |
-| Taxa de Falsos Positivos | 4.8% | <10% | ✅ |
+| Tempo de Processamento | 3.2s | &lt;5s | ✅ |
+| Taxa de Falsos Positivos | 4.8% | &lt;10% | ✅ |
 
 ### Benchmarks por Tipo
 - **Análise Municipal**: ~2.1s

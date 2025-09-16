@@ -99,7 +99,7 @@ graph TB
 
 ### 2. **Zumbi dos Palmares** - Anomaly Detective  
 - **Capacidades**: Detecção estatística (Z-score), análise espectral (FFT), padrões temporais
-- **Métricas**: Taxa de detecção 87%, falsos positivos <5%
+- **Métricas**: Taxa de detecção 87%, falsos positivos &lt;5%
 - **[Ver documentação completa →](./zumbi.md)**
 
 ### 3. **Anita Garibaldi** - Pattern Analyst

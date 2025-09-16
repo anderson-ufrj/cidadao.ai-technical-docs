@@ -270,7 +270,7 @@ def check_mandatory_clauses(self, contract_text):
 |---------|-------|------|--------|
 | Precisão NER | 92% | >90% | ✅ |
 | Detecção de Irregularidades | 88% | >85% | ✅ |
-| Tempo de Análise (doc) | 2.3s | <3s | ✅ |
+| Tempo de Análise (doc) | 2.3s | &lt;3s | ✅ |
 | Cobertura de Testes | 91% | >90% | ✅ |
 
 ### Benchmarks por Tipo de Documento

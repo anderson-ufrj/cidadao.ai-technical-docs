@@ -179,8 +179,8 @@ async def pipeline_investigation(self, stages):
 | Métrica | Valor | Meta | Status |
 |---------|-------|------|--------|
 | Taxa de Sucesso | 94% | >90% | ✅ |
-| Tempo Médio (investigação) | 98s | <120s | ✅ |
-| Reflexões Necessárias | 12% | <15% | ✅ |
+| Tempo Médio (investigação) | 98s | &lt;120s | ✅ |
+| Reflexões Necessárias | 12% | &lt;15% | ✅ |
 | Qualidade Média | 0.91 | >0.85 | ✅ |
 
 ### Estatísticas de Uso
