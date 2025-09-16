@@ -98,7 +98,7 @@ Este sistema multi-agente foi concebido com o propósito de **democratizar o ace
 ### 👨‍💻 Autor
 
 <div style={{display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem'}}>
-  <img src="/cidadao.ai-technical-docs/img/author.png" width="80" height="80" style={{borderRadius: '50%', border: '3px solid var(--cidadao-primary)'}} />
+  <img src="/cidadao.ai-technical-docs/img/author.jpeg" width="80" height="80" style={{borderRadius: '50%', border: '3px solid var(--cidadao-primary)'}} />
   <div>
     <strong>Anderson Henrique da Silva</strong><br/>
     <em>Bacharelando em Ciência da Computação | Engenheiro de Sistemas de IA</em><br/>
