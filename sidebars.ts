@@ -62,6 +62,16 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
+      label: '📊 Monitoramento & Observabilidade',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'monitoring/overview',
+        'monitoring/grafana-dashboards',
+      ],
+    },
+    {
+      type: 'category',
       label: '🤖 Machine Learning',
       collapsible: true,
       collapsed: true,
