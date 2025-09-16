@@ -55,6 +55,7 @@ const sidebars: SidebarsConfig = {
           ],
         },
         'api/api-reference',
+        'api/websocket',
         'api/datasets',
         'api/code-examples',
         'api/swagger-ui',
