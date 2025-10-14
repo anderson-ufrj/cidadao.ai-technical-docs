@@ -21,23 +21,65 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'category',
-      label: '🤖 Agentes Especializados',
+      label: '🤖 Agentes Especializados (17)',
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
         'agents/overview',
         'agents/multi-agent-overview',
-        'agents/abaporu',
-        'agents/zumbi',
-        'agents/anita',
-        'agents/tiradentes',
-        'agents/senna',
-        'agents/nana',
-        'agents/machado',
-        'agents/dandara',
-        'agents/bonifacio',
-        'agents/drummond',
-        'agents/niemeyer',
+        {
+          type: 'category',
+          label: '🎯 Coordenação',
+          items: [
+            'agents/senna',
+            'agents/abaporu-master',
+          ],
+        },
+        {
+          type: 'category',
+          label: '🔍 Investigação',
+          items: [
+            'agents/zumbi',
+            'agents/oxossi',
+            'agents/obaluaie',
+          ],
+        },
+        {
+          type: 'category',
+          label: '📊 Análise',
+          items: [
+            'agents/anita-garibaldi',
+            'agents/lampiao',
+            'agents/bonifacio',
+            'agents/ceuci',
+          ],
+        },
+        {
+          type: 'category',
+          label: '📝 Processamento',
+          items: [
+            'agents/machado',
+            'agents/dandara',
+            'agents/maria-quiteria',
+          ],
+        },
+        {
+          type: 'category',
+          label: '📢 Comunicação',
+          items: [
+            'agents/tiradentes',
+            'agents/drummond',
+            'agents/oscar-niemeyer',
+          ],
+        },
+        {
+          type: 'category',
+          label: '🧠 Suporte',
+          items: [
+            'agents/nana',
+            'agents/deodoro',
+          ],
+        },
       ],
     },
     {
