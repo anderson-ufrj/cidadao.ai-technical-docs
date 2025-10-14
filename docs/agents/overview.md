@@ -161,6 +161,46 @@ graph TB
 - **Capacidades**: Decomposição de tarefas, delegação, síntese de resultados
 - **Status**: ✅ **100% Produção**
 
+#### 🎯 Comparação: Agentes de Coordenação
+
+| Característica | Senna (Semantic Router) | Abaporu (Master Orchestrator) |
+|----------------|------------------------|------------------------------|
+| **Função Principal** | Roteamento de entrada | Coordenação multi-agente |
+| **Posição na Pipeline** | Ponto de entrada único | Camada de orquestração |
+| **Decisão** | Para qual agente rotear | Como decompor tarefas complexas |
+| **Estratégias** | Rule-based, semantic, intent | Planning, delegation, synthesis |
+| **Performance** | &lt;10ms, 95%+ acurácia | Variable (depende dos sub-agents) |
+| **Arquitetura** | BaseAgent + routing logic | ReflectiveAgent (threshold 0.8) |
+| **Auto-reflexão** | Não (decisão única) | Sim (até 3 iterações) |
+| **Fallback** | Lista de agentes alternativos | Re-planning, quality check |
+| **Integração Típica** | Upstream de todos | Coordena Investigation/Analysis |
+| **Casos de Uso** | "Analise gastos Saúde 2024" → Senna decide | Senna roteia → Abaporu coordena Zumbi+Anita+Bonifácio |
+| **Threshold/Limite** | Confidence >0.7 para aceitar | Quality >0.8 para finalizar |
+| **Complexidade Tratada** | Queries diretas | Investigações multi-dimensionais |
+
+:::tip **Quando Usar Senna vs Abaporu**
+- **Senna**: Automaticamente usado em TODAS as queries do usuário (ponto de entrada único)
+- **Abaporu**: Automaticamente invocado quando Senna detecta query complexa que requer múltiplos agentes
+:::
+
+:::info **Fluxo Típico de Query Complexa**
+```
+User: "Investigar fraudes em licitações de TI no Sudeste em 2024, com previsões para 2025"
+
+Senna (Router):
+  - Detecta query complexa (múltiplas dimensões)
+  - Confidence: 0.92 → roteia para Abaporu
+
+Abaporu (Orchestrator):
+  - Planeja: Oxóssi (fraudes) + Lampião (regional: Sudeste) + Machado (categoria: TI) + Ceuci (forecast 2025)
+  - Delega tarefas em paralelo
+  - Coleta resultados
+  - Sintetiza resposta integrada
+  - Auto-reflexão: quality 0.85 > threshold 0.8 ✅
+  - Envia para Tiradentes (relatório)
+```
+:::
+
 ---
 
 ### 🔍 Investigação e Detecção (3 agentes)
@@ -182,6 +222,25 @@ graph TB
 - **Análises**: Ética, integridade, compliance, red flags
 - **Técnicas**: Behavioral analysis, network analysis, anomaly scoring
 - **Status**: ✅ **100% Produção**
+
+#### 🔍 Comparação: Agentes de Investigação
+
+| Característica | Zumbi (Anomalias) | Oxóssi (Fraudes) | Obaluaiê (Corrupção) |
+|----------------|-------------------|------------------|----------------------|
+| **Foco Principal** | Anomalias estatísticas | Fraudes estruturadas | Corrupção sistêmica |
+| **Técnicas Principais** | Z-score, FFT, clustering | Graph analysis, pattern matching | Network analysis, behavioral scoring |
+| **Detecção** | Outliers, desvios, padrões | Bid rigging, cartels, phantoms | Red flags, ethical violations |
+| **Performance** | 87% taxa, &lt;5% falsos+ | ML classification, high precision | Risk scoring, pattern detection |
+| **Threshold Crítico** | 2.5σ desvio padrão | >85% similarity | Customizable risk levels |
+| **Output Típico** | Lista de anomalias + evidências | Fraud networks + confidence | Corruption risk score + recommendations |
+| **Integração Comum** | Anita (trends), Oscar (viz) | Zumbi (anomalias), Machado (NER) | Zumbi, Oxóssi, Tiradentes |
+| **Latência** | 3-8s análise completa | 5-12s network analysis | 4-10s risk assessment |
+
+:::tip **Quando Usar Cada Agente de Investigação**
+- **Zumbi**: Detectar outliers, desvios estatísticos, padrões incomuns em séries temporais
+- **Oxóssi**: Investigar esquemas estruturados (cartéis, conluio, empresas fantasmas)
+- **Obaluaiê**: Avaliar risco de corrupção sistêmica, análise ética, compliance
+:::
 
 ---
 
@@ -214,6 +273,26 @@ graph TB
 - **Predições**: Budget forecasting, anomaly prediction, trend extrapolation
 - **Acurácia**: MAPE &lt;15%, R² >0.85
 - **Status**: ✅ **100% Produção**
+
+#### 📊 Comparação: Agentes de Análise e Inteligência
+
+| Característica | Anita (Trends/FFT) | Lampião (Regional) | Bonifácio (Política) | Ceuci (Predição) |
+|----------------|-------------------|-------------------|---------------------|-----------------|
+| **Dimensão Temporal** | Histórica + padrões | Histórica comparativa | Avaliativa retrospectiva | Futura (forecasting) |
+| **Dimensão Espacial** | Nacional | Multi-nível geográfico | Nacional/benchmark | Nacional |
+| **Algoritmos Principais** | FFT, cross-spectral, correlação | Clustering geográfico, heatmaps | 3 E's, SROI, sustainability | ARIMA, Prophet, LSTM, XGBoost |
+| **Tipo de Insight** | Periodicidades, tendências | Desigualdades regionais | Efetividade de políticas | Previsões, anomalias futuras |
+| **Acurácia/Performance** | 2-4s, &lt;500ms individual | 3-6s análise multi-nível | 3-5s avaliação completa | MAPE &lt;15%, R² >0.85 |
+| **Output Típico** | Séries temporais + FFT spectrum | Mapas, rankings regionais | Score 3 E's + SROI | Forecast + intervalo confiança |
+| **Integração Comum** | Zumbi, Lampião, Oscar | Anita, Oscar, Tiradentes | Anita, Dandara, Tiradentes | Anita, Bonifácio, Oscar |
+| **Casos de Uso** | Detectar sazonalidade, ciclos | Comparar estados/municípios | Avaliar programas sociais | Orçamento 2026, tendências |
+
+:::tip **Quando Usar Cada Agente de Análise**
+- **Anita Garibaldi**: Identificar padrões temporais, sazonalidades, correlações entre variáveis
+- **Lampião**: Comparações geográficas, desigualdades regionais, eficiência por território
+- **José Bonifácio**: Avaliar impacto e efetividade de políticas públicas, ROI social
+- **Ceuci**: Prever gastos futuros, detectar anomalias antes que aconteçam, planejamento
+:::
 
 ---
 
@@ -267,6 +346,34 @@ graph TB
 - **Export**: PNG, SVG, HTML interativo, base64 embedding
 - **Performance**: &lt;2s gráfico simples, &lt;5s dashboard complexo
 - **Status**: ✅ **100% Produção**
+
+#### 📢 Comparação: Agentes de Comunicação e Apresentação
+
+| Característica | Tiradentes (Reporter) | Drummond (Communicator) | Oscar (Visualization) |
+|----------------|----------------------|------------------------|----------------------|
+| **Tipo de Output** | Documentos estruturados | Notificações/alertas | Gráficos e dashboards |
+| **Formatos Suportados** | MD, HTML, PDF, JSON, Summary | 10 canais (Email, SMS, etc.) | PNG, SVG, HTML interativo |
+| **Audiência** | Técnica, Executiva, Pública | End-users, stakeholders | Todos os níveis |
+| **Tecnologia Principal** | NLG templates + estruturação | NLG neural (Maritaca) + templates | Plotly, Matplotlib, Folium |
+| **Latência** | &lt;3s completo, &lt;100ms summary | &lt;2s email, &lt;500ms push | &lt;2s simples, &lt;5s complexo |
+| **Personalização** | Adaptação automática por audiência | Priority queue, deduplication | Temas, cores, interatividade |
+| **Integração Típica** | Downstream de todos agentes | Final da pipeline | Intermediário ou final |
+| **Casos de Uso** | Relatórios investigação, análise | Alertas críticos, newsletters | Dashboards, exploratory analysis |
+| **Features Especiais** | Multi-formato, citations | Rate limiting, circuit breaker | LTTB downsampling, choropleth |
+| **Status Produção** | 100% | 95% Beta (HF Spaces) | 100% |
+
+:::tip **Quando Usar Cada Agente de Comunicação**
+- **Tiradentes**: Gerar relatórios formais, documentação de investigações, análises completas
+- **Drummond**: Enviar notificações urgentes, alertas automáticos, newsletters periódicas
+- **Oscar Niemeyer**: Criar visualizações para explorar dados, dashboards executivos, mapas
+:::
+
+:::info **Pipeline de Comunicação Típica**
+```
+[Agente de Análise] → Oscar (visualização) → Tiradentes (relatório) → Drummond (notificação)
+```
+Os três agentes frequentemente trabalham em sequência: Oscar cria gráficos, Tiradentes estrutura relatório, Drummond distribui.
+:::
 
 ---
 
