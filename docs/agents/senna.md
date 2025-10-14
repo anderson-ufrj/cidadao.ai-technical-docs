@@ -419,43 +419,87 @@ print(response.data["routing_decision"])
 Query com **múltiplas intenções** requer orquestração de vários agentes.
 
 ```python
+# ==========================================
+# QUERY MULTI-INTENT COMPLEXA
+# ==========================================
+# Esta query contém 3 intenções distintas:
+# 1. "Analise os gastos" → ANALYZE intent → Agent: Lampião
+# 2. "por estado" → COMPARE intent → Regional analysis
+# 3. "gere um relatório em PDF com gráficos" → REPORT intent → Tiradentes + Oscar
 message = AgentMessage(
     content="Analise os gastos por estado e gere um relatório em PDF com gráficos",
-    action="route_query"
+    action="route_query"  # Solicita roteamento semântico
 )
 
+# Senna processa e detecta que precisa de múltiplos agentes
 response = await senna.process(message, context)
 
-# Router detecta múltiplas ações e cria um plano
+# ==========================================
+# PLANO DE EXECUÇÃO MULTI-AGENTE
+# ==========================================
+# Router detecta múltiplas ações e cria um PLANO DE ORQUESTRAÇÃO
+# com dependências entre etapas (DAG - Directed Acyclic Graph)
 print(response.data["multi_agent_plan"])
 # Output:
 # {
 #   "steps": [
+#     # ==========================================
+#     # STEP 1: ANÁLISE REGIONAL (Lampião)
+#     # ==========================================
 #     {
-#       "agent": "lampiao",
-#       "action": "analyze_by_region",
-#       "order": 1,
-#       "parameters": {"level": "state"}
+#       "agent": "lampiao",              # Agente especializado em análise regional
+#       "action": "analyze_by_region",   # Ação específica: análise por geografia
+#       "order": 1,                      # Primeira etapa (sem dependências)
+#       "parameters": {
+#         "level": "state"               # Nível de agregação: estadual
+#       }
 #     },
+#
+#     # ==========================================
+#     # STEP 2: VISUALIZAÇÃO (Oscar Niemeyer)
+#     # ==========================================
 #     {
-#       "agent": "oscar",
-#       "action": "create_visualization",
-#       "order": 2,
-#       "depends_on": [1],
-#       "parameters": {"chart_type": "bar"}
+#       "agent": "oscar",                # Agente de visualização de dados
+#       "action": "create_visualization", # Criar gráficos
+#       "order": 2,                      # Segunda etapa
+#       "depends_on": [1],               # DEPENDE do step 1 (precisa dos dados de Lampião)
+#       "parameters": {
+#         "chart_type": "bar"            # Tipo de gráfico: barras (bom para comparação de estados)
+#       }
 #     },
+#
+#     # ==========================================
+#     # STEP 3: GERAÇÃO DE RELATÓRIO (Tiradentes)
+#     # ==========================================
 #     {
-#       "agent": "tiradentes",
-#       "action": "generate_pdf_report",
-#       "order": 3,
-#       "depends_on": [1, 2],
-#       "parameters": {"format": "PDF", "include_charts": true}
+#       "agent": "tiradentes",           # Agente reporter (NLG)
+#       "action": "generate_pdf_report", # Ação: gerar relatório em PDF
+#       "order": 3,                      # Terceira e última etapa
+#       "depends_on": [1, 2],            # DEPENDE dos steps 1 e 2 (dados + gráficos)
+#       "parameters": {
+#         "format": "PDF",               # Formato de saída
+#         "include_charts": true         # Incluir visualizações do Oscar
+#       }
 #     }
 #   ],
+#
+#   # Estimativa de tempo total (soma dos steps com paralelização quando possível)
 #   "estimated_time": "15-20 segundos",
+#
+#   # Complexidade da query: "low", "medium", "high"
+#   # Baseado em: número de steps, dependências, volume de dados
 #   "complexity": "medium"
 # }
 ```
+
+:::tip **Fluxo de Execução**
+O plano acima será executado pelo **Abaporu (Master Orchestrator)** em 3 fases:
+1. **Fase 1 (Lampião)**: Analisa gastos por estado → 6-8s
+2. **Fase 2 (Oscar)**: Cria gráficos com resultados de Lampião → 3-5s
+3. **Fase 3 (Tiradentes)**: Gera PDF integrando análise + gráficos → 4-6s
+
+**Total**: ~15-20 segundos (sequencial devido às dependências)
+:::
 
 ---
 

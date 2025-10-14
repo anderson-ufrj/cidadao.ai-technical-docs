@@ -236,74 +236,122 @@ class ModelType(Enum):
 from src.agents.ceuci import PredictiveAgent, PredictionRequest, PredictionType, ModelType
 from src.agents.deodoro import AgentMessage, AgentContext
 
-# Inicializar agente
+# ==========================================
+# 1. INICIALIZAR AGENTE
+# ==========================================
+# Cria instância do agente preditivo Ceuci
+# Carrega modelos pré-treinados e pipelines de pré-processamento
 ceuci = PredictiveAgent()
-await ceuci.initialize()
+await ceuci.initialize()  # Async initialization para carregar modelos pesados
 
-# Preparar previsão de gastos
+# ==========================================
+# 2. PREPARAR REQUEST DE PREVISÃO
+# ==========================================
 message = AgentMessage(
     content={
-        "action": "predict_time_series",
+        "action": "predict_time_series",  # Tipo de predição: série temporal
+
         "prediction_request": {
+            # Identificador único da requisição (rastreamento)
             "request_id": "PRED-2024-001",
+
+            # Tipo de predição: "time_series", "classification", "regression"
             "prediction_type": "time_series",
+
+            # Modelo de ML a usar: "arima", "prophet", "lstm", "xgboost", etc.
             "model_type": "arima",
+
+            # DADOS HISTÓRICOS: Mínimo 36 pontos para ARIMA funcionar bem
+            # Formato: lista de dicts com timestamp + valor
             "data": [
-                {"date": "2023-01", "value": 1000000},
-                {"date": "2023-02", "value": 1050000},
-                # ... 36 meses de histórico
+                {"date": "2023-01", "value": 1000000},  # Janeiro 2023
+                {"date": "2023-02", "value": 1050000},  # Fevereiro 2023
+                # ... total de 36 meses de histórico (3 anos)
             ],
+
+            # Variável a ser prevista (target)
             "target_variable": "value",
+
+            # Variáveis features (preditoras) - neste caso, apenas temporal
             "feature_variables": ["date"],
-            "prediction_horizon": 12,  # Próximos 12 meses
+
+            # HORIZONTE DE PREVISÃO: quantos períodos à frente prever
+            # 12 meses = previsão para 1 ano futuro
+            "prediction_horizon": 12,
+
+            # Nível de confiança para intervalos (95% = 2σ)
             "confidence_level": 0.95,
+
+            # Parâmetros adicionais específicos do modelo ARIMA
             "additional_params": {
-                "auto_arima": True,
-                "seasonal": True
+                "auto_arima": True,    # Auto-selecionar p,d,q ótimos
+                "seasonal": True       # Considerar sazonalidade (ciclos anuais)
             }
         }
     },
-    sender="abaporu",
-    context=AgentContext(investigation_id="INV-PRED-001")
+    sender="abaporu",  # Quem solicitou a previsão
+    context=AgentContext(investigation_id="INV-PRED-001")  # Contexto da investigação
 )
 
-# Executar previsão
+# ==========================================
+# 3. EXECUTAR PREVISÃO
+# ==========================================
+# Processa assincronamente: treina modelo + gera forecast
 response = await ceuci.process_message(message, context)
 
-# Estrutura da resposta (planejada)
+# ==========================================
+# 4. ESTRUTURA DA RESPOSTA (PLANEJADA)
+# ==========================================
 {
     "prediction_result": {
+        # Mesmo request_id para rastreabilidade
         "request_id": "PRED-2024-001",
+
+        # ARRAY DE PREVISÕES: 12 períodos (1 ano)
         "predictions": [
             {
-                "period": 1,
-                "predicted_value": 1100000,
-                "lower_bound": 1050000,    # 95% CI
-                "upper_bound": 1150000,
-                "confidence": 0.95
+                "period": 1,                    # Período 1 (próximo mês)
+                "predicted_value": 1100000,     # Valor previsto central
+                "lower_bound": 1050000,         # Limite inferior (95% CI)
+                "upper_bound": 1150000,         # Limite superior (95% CI)
+                "confidence": 0.95              # Nível de confiança
             },
-            # ... 12 períodos
+            # ... mais 11 períodos (total 12 meses)
         ],
+
+        # MÉTRICAS DE PERFORMANCE DO MODELO (validação cruzada)
         "model_performance": {
-            "mae": 25000,           # Mean Absolute Error
-            "rmse": 35000,          # Root Mean Square Error
-            "mape": 2.3,            # Mean Absolute Percentage Error (%)
-            "r2_score": 0.92,       # R² Score
-            "aic": 450.2,           # Akaike Information Criterion
-            "bic": 465.8,           # Bayesian Information Criterion
-            "confidence": 0.88
+            "mae": 25000,      # Mean Absolute Error: erro médio em reais
+            "rmse": 35000,     # Root Mean Square Error: penaliza erros grandes
+            "mape": 2.3,       # Mean Absolute Percentage Error: 2.3% de erro
+            "r2_score": 0.92,  # R²: 92% da variância explicada (excelente!)
+            "aic": 450.2,      # Akaike Information Criterion (menor = melhor)
+            "bic": 465.8,      # Bayesian Information Criterion (penaliza complexidade)
+            "confidence": 0.88 # Confiança geral do modelo
         },
-        "trend_direction": "upward",
-        "seasonal_strength": 0.65,
-        "anomaly_alerts": 0
+
+        # ANÁLISES ADICIONAIS
+        "trend_direction": "upward",     # Tendência: "upward", "downward", "stable"
+        "seasonal_strength": 0.65,       # Força da sazonalidade (0-1)
+        "anomaly_alerts": 0              # Número de anomalias previstas
     },
-    "status": "prediction_completed",
+
+    # Status da operação
+    "status": "prediction_completed",  # "completed", "failed", "partial"
+
+    # Confiança geral da previsão (0-1)
     "confidence": 0.88,
+
+    # METADADOS DO MODELO
     "metadata": {
-        "model_version": "1.0",
-        "training_samples": 36,
-        "model_type": "arima",
-        "parameters": {"p": 2, "d": 1, "q": 1}
+        "model_version": "1.0",         # Versão do modelo treinado
+        "training_samples": 36,         # Quantidade de dados usados no treino
+        "model_type": "arima",          # Modelo selecionado
+        "parameters": {                 # Parâmetros finais do ARIMA
+            "p": 2,  # Ordem autoregressiva (AR)
+            "d": 1,  # Ordem de diferenciação (I)
+            "q": 1   # Ordem de média móvel (MA)
+        }
     }
 }
 ```

@@ -344,64 +344,115 @@ print(response.data["aggregated"])
 ### Exemplo 2: Network Graph de Fraude (Sprint 6) 🔥
 
 ```python
+# ==========================================
+# NETWORK GRAPH PARA VISUALIZAÇÃO DE FRAUDE
+# ==========================================
+# Caso de uso: Oxóssi detectou relacionamentos suspeitos
+# Oscar transforma em grafo interativo com community detection
+
 message = AgentMessage(
-    sender="oxossi",
+    sender="oxossi",                   # Agente que detectou a fraude
     recipient="OscarNiemeyerAgent",
-    action="network_graph",
+    action="network_graph",            # Ação: criar grafo de relacionamentos
+
     payload={
+        # ==========================================
+        # ENTIDADES (NODOS DO GRAFO)
+        # ==========================================
+        # Cada entidade é um nodo no grafo
+        # Score: 0-1 (suspeita de envolvimento em fraude)
         "entities": [
             {
-                "id": "supplier_001",
+                "id": "supplier_001",           # ID único da entidade
                 "name": "Empresa ABC Ltda",
-                "type": "empresa",
-                "score": 0.85  # Alta suspeita
+                "type": "empresa",              # Tipo: empresa, servidor, intermediário
+                "score": 0.85                   # 85% de suspeita (COR VERMELHA no grafo)
             },
             {
                 "id": "official_042",
                 "name": "João Silva",
-                "type": "servidor",
-                "score": 0.72
+                "type": "servidor",             # Servidor público
+                "score": 0.72                   # 72% de suspeita (COR LARANJA)
             },
             {
                 "id": "supplier_015",
                 "name": "Fornecedor XYZ",
                 "type": "empresa",
-                "score": 0.45
+                "score": 0.45                   # 45% de suspeita (COR AMARELA)
             }
         ],
+
+        # ==========================================
+        # RELACIONAMENTOS (ARESTAS DO GRAFO)
+        # ==========================================
+        # Cada relationship é uma aresta conectando dois nodos
+        # Strength: 0-1 (força do relacionamento suspeito)
         "relationships": [
             {
-                "source": "supplier_001",
-                "target": "official_042",
-                "type": "contracts_with",
-                "strength": 0.9
+                "source": "supplier_001",       # Origem: Empresa ABC
+                "target": "official_042",       # Destino: Servidor João Silva
+                "type": "contracts_with",       # Tipo: contratos firmados
+                "strength": 0.9                 # 90% - RELAÇÃO FORTE (aresta grossa)
             },
             {
-                "source": "supplier_015",
-                "target": "official_042",
-                "type": "same_address",
-                "strength": 0.8
+                "source": "supplier_015",       # Origem: Fornecedor XYZ
+                "target": "official_042",       # Destino: mesmo servidor
+                "type": "same_address",         # RED FLAG: mesmo endereço (empresa fantasma?)
+                "strength": 0.8                 # 80% - RELAÇÃO FORTE
             }
         ],
-        "threshold": 0.7  # Mínimo para exibir
+
+        # Threshold de exibição: só mostra entidades/relações > 0.7
+        # Filtra ruído e foca em relacionamentos mais suspeitos
+        "threshold": 0.7
     }
 )
 
+# ==========================================
+# PROCESSAR E GERAR VISUALIZAÇÃO
+# ==========================================
+# Oscar:
+# 1. Cria grafo com NetworkX
+# 2. Aplica algoritmo Louvain para detectar comunidades (fraud rings)
+# 3. Usa force-directed layout (spring algorithm) para posicionar nodos
+# 4. Gera JSON compatível com Plotly para renderização frontend
 response = await oscar.process(message, context)
 
-# Metadata do grafo
+# ==========================================
+# METADATA DO GRAFO (ANÁLISE ESTRUTURAL)
+# ==========================================
 print(response.result["metadata"])
 # {
-#   "communities": 2,  # 2 anéis de fraude detectados
-#   "nodes": 3,
-#   "edges": 2,
-#   "threshold_applied": 0.7
+#   "communities": 2,        # Louvain detectou 2 comunidades (anéis de fraude)
+#   "nodes": 3,              # 3 entidades no grafo (2 empresas + 1 servidor)
+#   "edges": 2,              # 2 relacionamentos entre eles
+#   "threshold_applied": 0.7 # Threshold usado para filtrar
 # }
 
-# Plotly JSON pronto para frontend
+# ==========================================
+# VISUALIZAÇÃO PLOTLY (PRONTA PARA FRONTEND)
+# ==========================================
+# JSON compatível com Plotly Network Graph:
+# - Nodos coloridos por score (verde→amarelo→vermelho)
+# - Arestas com espessura proporcional à strength
+# - Tooltip com detalhes ao passar mouse
+# - Comunidades destacadas com cores diferentes
 viz_json = response.result["visualization"]
-# Carrega diretamente: Plotly.newPlot('div', JSON.parse(viz_json))
+
+# Frontend carrega diretamente:
+# Plotly.newPlot('graph-div', JSON.parse(viz_json))
+# Resultado: Grafo interativo mostrando anel de fraude
 ```
+
+:::warning **Interpretação do Grafo**
+Neste exemplo, o grafo revela um possível **anel de fraude**:
+- **João Silva** (servidor) está conectado a **2 empresas diferentes**
+- **Empresa ABC** tem alta suspeita (0.85) e relação forte com João (0.9)
+- **Fornecedor XYZ** compartilha **mesmo endereço** com João (RED FLAG!)
+- **2 comunidades detectadas** = João e suas empresas formam grupo isolado
+
+**Ação sugerida**: Investigação aprofundada do servidor João Silva e das empresas relacionadas.
+:::
 
 ---
 
