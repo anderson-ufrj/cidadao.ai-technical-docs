@@ -7,7 +7,7 @@ description: "Guia completo para deploy do Cidadão.AI em diferentes ambientes"
 # 🚀 Guia de Deploy
 
 :::info **Opções de Deploy**
-O Cidadão.AI pode ser implantado em várias plataformas: Docker local, HuggingFace Spaces, AWS/GCP/Azure, ou servidores próprios. Este guia cobre todas as opções.
+O Cidadão.AI pode ser implantado em várias plataformas: **Railway** (produção atual), Docker local, AWS/GCP/Azure, ou servidores próprios. Este guia cobre todas as opções.
 :::
 
 ## 📋 Pré-requisitos
@@ -164,96 +164,253 @@ server {
 }
 ```
 
-## 🤗 Deploy no HuggingFace Spaces
+## 🚂 Deploy no Railway (Produção Atual)
 
-### 1. Preparação do Repositório
+:::tip **Plataforma de Produção**
+O Cidadão.AI roda em produção no **Railway** desde outubro de 2024, com 99.9% de uptime e suporte completo a Celery + Beat para monitoramento 24/7.
+
+**🔗 API de Produção**: [https://cidadao-api-production.up.railway.app](https://cidadao-api-production.up.railway.app)
+:::
+
+### 1. Arquitetura Multi-Serviço
+
+O Railway executa **3 serviços** simultâneos via Procfile:
+
+```mermaid
+graph LR
+    subgraph "Railway Project"
+        Web[Web Service<br/>FastAPI + Uvicorn<br/>PORT dinâmico]
+        Worker[Worker Service<br/>Celery Worker<br/>4 concurrency]
+        Beat[Beat Service<br/>Celery Beat<br/>Schedule 6h]
+
+        PG[(PostgreSQL<br/>Supabase)]
+        RD[(Redis<br/>Railway)]
+    end
+
+    Internet --> Web
+    Web --> Worker
+    Beat --> Worker
+    Web --> PG
+    Web --> RD
+    Worker --> PG
+
+    style Web fill:#4CAF50
+    style Worker fill:#2196F3
+    style Beat fill:#FF9800
+```
+
+### 2. Procfile (Estratégia de Deploy)
+
+O Railway usa **Procfile** como prioridade máxima:
+
+```procfile
+# Main API server - usa $PORT do Railway
+web: uvicorn src.api.app:app --host 0.0.0.0 --port $PORT
+
+# Celery worker para tasks em background
+worker: celery -A src.infrastructure.queue.celery_app worker --loglevel=info --queues=critical,high,default,low,background --concurrency=4
+
+# Celery beat para investigações 24/7
+beat: celery -A src.infrastructure.queue.celery_app beat --loglevel=info
+```
+
+:::warning **Porta Dinâmica**
+Railway **injeta automaticamente** a variável `$PORT` (geralmente 8000). **NUNCA** hardcode a porta como 7860 (porta do HuggingFace).
+:::
+
+### 3. Variáveis de Ambiente
+
+Configure no **Railway Dashboard** → **Settings** → **Variables**:
+
+#### Obrigatórias
 
 ```bash
-# Criar branch específico para HF Spaces
-git checkout -b hf-fastapi
+# Database (Supabase)
+SUPABASE_URL=https://seu-projeto.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 
-# Remover arquivos desnecessários
-rm -rf tests/ scripts/ monitoring/
+# Security Keys (gerar com: python3 -c "import secrets; print(secrets.token_urlsafe(64))")
+JWT_SECRET_KEY=ZreYJKfHts0RU3EU...
+SECRET_KEY=gm_vrQ054CziyUEWbV...
 
-# Adicionar app.py para HF Spaces
-cat > app.py << 'EOF'
-import subprocess
-import sys
-
-# Install dependencies
-subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
-
-# Run the FastAPI app
-subprocess.run(["python", "-m", "src.main"])
-EOF
+# Environment
+ENVIRONMENT=production
+APP_ENV=production
 ```
 
-### 2. Configurar Spaces
-
-```yaml
-# README.md no root do projeto
----
-title: Cidadão AI Backend
-emoji: 🏛️
-colorFrom: green
-colorTo: blue
-sdk: docker
-sdk_version: "20.10.0"
-app_file: app.py
-pinned: true
----
-
-# Cidadão.AI Backend
-
-Sistema Multi-Agente para Transparência Pública Brasileira
-```
-
-### 3. Dockerfile para HF Spaces
-
-```dockerfile
-FROM python:3.10-slim
-
-WORKDIR /app
-
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copy requirements first for caching
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy application
-COPY . .
-
-# HuggingFace Spaces specific
-ENV PYTHONPATH=/app
-ENV HOST=0.0.0.0
-ENV PORT=7860
-
-# Create non-root user
-RUN useradd -m -u 1000 user
-USER user
-
-# Run the application
-CMD ["python", "-m", "src.main"]
-```
-
-### 4. Deploy via Git
+#### Opcionais
 
 ```bash
-# Adicionar remote do HuggingFace
-git remote add hf https://huggingface.co/spaces/YOUR_USERNAME/cidadao-ai-backend
+# APIs Externas
+TRANSPARENCY_API_KEY=e24f842355f72...
+DADOS_GOV_API_KEY=eyJhbGciOiJIUzI...
+GROQ_API_KEY=gsk_...
 
-# Push para HF Spaces
-git push hf hf-fastapi:main
-
-# Acompanhar build
-# Acesse: https://huggingface.co/spaces/YOUR_USERNAME/cidadao-ai-backend
+# Redis (auto-provisionado se adicionar serviço Redis)
+REDIS_URL=redis://default:password@host:port
 ```
+
+#### Auto-Provisionadas pelo Railway
+
+```bash
+PORT=8000  # Railway injeta automaticamente
+RAILWAY_ENVIRONMENT=production
+```
+
+### 4. Deploy via Railway CLI
+
+```bash
+# 1. Instalar Railway CLI
+npm install -g @railway/cli
+
+# 2. Login
+railway login
+
+# 3. Link ao projeto
+railway link
+
+# 4. Deploy
+git push origin main
+# Railway detecta push → Build → Deploy → Healthcheck automático
+```
+
+### 5. Criar Múltiplos Serviços
+
+Railway inicialmente cria apenas o serviço **web**. Para adicionar **worker** e **beat**:
+
+#### Via Dashboard
+
+1. **New Service** → "Create service from GitHub repo"
+2. Selecione o repositório `cidadao.ai-backend`
+3. **Settings** → **Deploy** → **Procfile Process**: selecione `worker` ou `beat`
+4. Configure as **mesmas variáveis de ambiente** do serviço web
+
+#### Via Railway CLI
+
+```bash
+# Criar serviço worker
+railway service create --name cidadao-worker
+
+# Criar serviço beat
+railway service create --name cidadao-beat
+```
+
+### 6. Adicionar PostgreSQL e Redis
+
+```bash
+# Via Dashboard
+# 1. New → Database → Add PostgreSQL
+# 2. New → Database → Add Redis
+# Railway auto-copia as connection strings para env vars
+
+# Via CLI
+railway add postgresql
+railway add redis
+```
+
+### 7. Healthcheck e Logs
+
+```bash
+# Verificar saúde da API
+curl https://cidadao-api-production.up.railway.app/health
+
+# Resposta esperada
+{
+  "status": "healthy",
+  "timestamp": "2024-10-15T12:00:00Z",
+  "version": "2.1.0",
+  "services": {
+    "database": "ok",
+    "redis": "ok",
+    "agents": "ok"
+  }
+}
+
+# Ver logs em tempo real (via CLI)
+railway logs
+
+# Ver logs no Dashboard
+# Dashboard → Service → Logs → Live logs
+```
+
+### 8. Monitoramento
+
+```bash
+# Métricas disponíveis no Railway Dashboard
+# - CPU usage
+# - Memory usage
+# - Network bandwidth
+# - Request rate
+# - Response time (p50, p95, p99)
+
+# Acesse: Railway Dashboard → Metrics
+```
+
+### 9. Custos Estimados
+
+| Plano | Preço | Recursos | Recomendado para |
+|-------|-------|----------|------------------|
+| **Hobby** | $5/mês | 500h execução + $5 créditos | Desenvolvimento/Testes |
+| **Pro** | $20/mês | Execução ilimitada | **Produção** (atual) |
+
+**Custos adicionais**:
+- **PostgreSQL** (Supabase): Gratuito até 500MB
+- **Redis** (Railway): $10/mês (1GB)
+
+**Total estimado produção**: ~$30/mês
+
+### 10. CI/CD Automático
+
+Railway faz **deploy automático** em cada push:
+
+```bash
+git add .
+git commit -m "feat: add new feature"
+git push origin main
+
+# Railway automaticamente:
+# 1. Detecta push no GitHub
+# 2. Build da aplicação
+# 3. Deploy dos 3 serviços
+# 4. Healthcheck
+# 5. Rollback automático se falhar
+```
+
+### 11. Troubleshooting Comum
+
+#### Problema: App roda na porta 7860 (porta do HuggingFace)
+
+**Causa**: Arquivos de configuração conflitantes (railway.toml, railway.json, nixpacks.toml)
+
+**Solução**:
+```bash
+# Remover TODOS os arquivos de config exceto Procfile
+rm railway.toml railway.json nixpacks.toml
+
+git commit -m "fix(deploy): force Railway to use Procfile"
+git push origin main
+```
+
+#### Problema: Worker não inicia
+
+**Causa**: `REDIS_URL` não configurado
+
+**Solução**: Adicione serviço Redis no Railway Dashboard
+
+#### Problema: Deploy falha com "Invalid PORT"
+
+**Causa**: PORT hardcoded no código
+
+**Solução**: Use `$PORT` no Procfile e `os.getenv("PORT", 8000)` no código
+
+### 12. Links Úteis
+
+- 📚 [Railway Docs](https://docs.railway.app)
+- 🚂 [Procfile Reference](https://docs.railway.app/deploy/deployments#procfile)
+- 🔧 [Railway CLI](https://docs.railway.app/develop/cli)
+- 📖 [Guia Completo Railway](./railway-deployment.md) (documentação detalhada)
+
+---
 
 ## ☁️ Deploy em Cloud Providers
 
