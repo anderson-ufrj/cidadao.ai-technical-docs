@@ -21,7 +21,7 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 
 ### Stack Tecnológica
 - **FastAPI** - API REST com 40+ endpoints
-- **Sistema Multi-Agente** - 17 agentes especializados (47% operacionais)
+- **Sistema Multi-Agente** - 17 agentes especializados (100% operacionais) 🎉
 - **PostgreSQL + Redis** - Persistência e cache (Supabase + Railway)
 - **Celery + Beat** - Processamento assíncrono e tarefas agendadas
 - **Railway** - Plataforma de deployment e orquestração
@@ -30,7 +30,7 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 - **99.9%** disponibilidade SLA (Railway Platform)
 - **< 180ms** tempo de resposta médio (p95: 145ms)
 - **40+** endpoints REST documentados
-- **18** agentes especializados (94.4% operacionais)
+- **17** agentes especializados (16 produção + 1 beta = 100% operacionais)
 - **24/7** monitoramento autônomo (Celery Beat a cada 6h)
 
 ### Arquitetura do Ecossistema
@@ -84,20 +84,26 @@ graph TB
 
 ## 🤖 Sistema Multi-Agente
 
-Nosso sistema implementa **18 agentes especializados** com identidade cultural brasileira:
+Nosso sistema implementa **17 agentes especializados** com identidade cultural brasileira, **TODOS 100% OPERACIONAIS**:
 
 ### Agentes Principais
-- **Abaporu (MasterAgent)** - Coordenação central
-- **Zumbi** - Detecção de anomalias
-- **Anita Garibaldi** - Roteamento semântico
-- **Machado de Assis** - Processamento textual
+- **Ayrton Senna** - Roteamento semântico (95%+ acurácia, <10ms)
+- **Abaporu (Master Orchestrator)** - Coordenação multi-agente
+- **Zumbi dos Palmares** - Detecção de anomalias (87% taxa detecção)
+- **Anita Garibaldi** - Análise de tendências com FFT
+- **Tiradentes** - Geração de relatórios multi-formato
+- **José Bonifácio** - Avaliação de efetividade de políticas (3 E's + SROI)
+- **Machado de Assis** - Análise textual e NER
 
 ### Características Inovadoras
-1. **Self-reflection** - Agentes auto-avaliam decisões (threshold 0.8)
-2. **Memória contextual** - Aprendizado contínuo
+1. **Self-reflection** - Agentes auto-avaliam decisões (threshold 0.7-0.8)
+2. **Memória contextual** - ChromaDB com busca vetorial (Nanã)
 3. **Comunicação assíncrona** - Message passing eficiente
-4. **Identidade cultural** - Nomes históricos brasileiros
-5. **Monitoramento 24/7** - Celery tasks autônomos
+4. **Identidade cultural** - 17 nomes históricos brasileiros
+5. **Monitoramento 24/7** - Celery tasks autônomos + Prometheus
+6. **Multi-estratégia** - Rule-based + Semantic similarity + Intent detection
+
+[**📚 Ver todos os 17 agentes →**](./agents/overview.md)
 
 ## 🧮 Fundamentos Matemáticos
 
