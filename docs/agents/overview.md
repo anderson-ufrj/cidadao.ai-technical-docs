@@ -14,20 +14,12 @@ O Cidadão.AI implementa **17 agentes especializados** com personas históricas 
 
 ### 📊 Resumo de Implementação
 
-<div style="display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0;">
-  <span style="background: #4CAF50; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">
-    ✅ 16 Agentes Produção (100%)
-  </span>
-  <span style="background: #FF9800; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">
-    ⚡ 1 Agente Beta (95%)
-  </span>
-  <span style="background: #2196F3; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">
-    🎯 80% Test Coverage
-  </span>
-  <span style="background: #9C27B0; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">
-    🚀 100% Operacional
-  </span>
-</div>
+| Badge | Status |
+|-------|--------|
+| ✅ **Agentes Produção** | **16/17 (94%)** - Totalmente funcionais |
+| ⚡ **Agentes Beta** | **1/17 (6%)** - Drummond (HF Spaces) |
+| 🎯 **Cobertura Testes** | **~80%** - Boa cobertura |
+| 🚀 **Status Geral** | **100% OPERACIONAL** |
 
 - ✅ **16 agentes em produção (100%)** - Totalmente funcionais e testados
 - ✅ **1 agente em beta (95%)** - Drummond (limitação HuggingFace Spaces)
@@ -413,75 +405,41 @@ Os três agentes frequentemente trabalham em sequência: Oscar cria gráficos, T
 
 ## 🎨 Capability Matrix
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0;">
+### 🎯 Coordenação (Senna + Abaporu)
+- ✓ Roteamento semântico &lt;10ms
+- ✓ Orquestração multi-agente
+- ✓ Auto-reflexão quality >0.8
+- ✓ Fallback inteligente
 
-  <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">🎯 Coordenação</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ Roteamento semântico &lt;10ms<br/>
-      ✓ Orquestração multi-agente<br/>
-      ✓ Auto-reflexão quality &gt;0.8<br/>
-      ✓ Fallback inteligente
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Senna + Abaporu</div>
-  </div>
+### 🔍 Investigação (Zumbi + Oxóssi + Obaluaiê)
+- ✓ Anomalias (Z-score, FFT)
+- ✓ Fraudes (bid rigging, cartels)
+- ✓ Corrupção (ethical scoring)
+- ✓ 87% detection, &lt;5% FP
 
-  <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">🔍 Investigação</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ Anomalias (Z-score, FFT)<br/>
-      ✓ Fraudes (bid rigging, cartels)<br/>
-      ✓ Corrupção (ethical scoring)<br/>
-      ✓ 87% detection, &lt;5% FP
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Zumbi + Oxóssi + Obaluaiê</div>
-  </div>
+### 📊 Análise (Anita + Lampião + Bonifácio + Ceuci)
+- ✓ Trends (FFT + 9 patterns)
+- ✓ Regional (mapas + rankings)
+- ✓ Políticas (3 E's + SROI)
+- ✓ Predição (R² >0.85)
 
-  <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">📊 Análise</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ Trends (FFT + 9 patterns)<br/>
-      ✓ Regional (mapas + rankings)<br/>
-      ✓ Políticas (3 E's + SROI)<br/>
-      ✓ Predição (R² &gt;0.85)
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Anita + Lampião + Bonifácio + Ceuci</div>
-  </div>
+### 📝 Processamento (Machado + Dandara + M. Quitéria)
+- ✓ NER + análise textual
+- ✓ Equidade (Gini, Atkinson)
+- ✓ Segurança (CVE, OWASP)
+- ✓ Compliance automation
 
-  <div style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: white; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">📝 Processamento</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ NER + análise textual<br/>
-      ✓ Equidade (Gini, Atkinson)<br/>
-      ✓ Segurança (CVE, OWASP)<br/>
-      ✓ Compliance automation
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Machado + Dandara + M. Quitéria</div>
-  </div>
+### 📢 Comunicação (Tiradentes + Drummond + Oscar)
+- ✓ Reports (MD, HTML, PDF)
+- ✓ 10 canais (Email, SMS, etc)
+- ✓ Viz (15+ chart types)
+- ✓ &lt;3s geração completa
 
-  <div style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); color: #333; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">📢 Comunicação</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ Reports (MD, HTML, PDF)<br/>
-      ✓ 10 canais (Email, SMS, etc)<br/>
-      ✓ Viz (15+ chart types)<br/>
-      ✓ &lt;3s geração completa
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Tiradentes + Drummond + Oscar</div>
-  </div>
-
-  <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333; border-radius: 12px; padding: 20px;">
-    <div style="font-size: 24px; margin-bottom: 10px;">🧠 Suporte</div>
-    <div style="font-size: 14px; opacity: 0.9;">
-      ✓ Memória vetorial (ChromaDB)<br/>
-      ✓ RAG context &lt;100ms<br/>
-      ✓ Base architecture (BDI)<br/>
-      ✓ Prometheus metrics
-    </div>
-    <div style="margin-top: 10px; font-weight: bold;">Nanã + Deodoro</div>
-  </div>
-
-</div>
+### 🧠 Suporte (Nanã + Deodoro)
+- ✓ Memória vetorial (ChromaDB)
+- ✓ RAG context &lt;100ms
+- ✓ Base architecture (BDI)
+- ✓ Prometheus metrics
 
 ---
 
@@ -530,47 +488,16 @@ Os três agentes frequentemente trabalham em sequência: Oscar cria gráficos, T
 | **Comunicação** | Tempo Drummond | &lt;2s email, &lt;500ms push |
 | **Cobertura** | Testes | ~80% |
 
-### 🏆 Performance Badges
+### 🏆 Performance Highlights
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-
-  <div style="border: 2px solid #FFD700; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #FFD700;">⚡ &lt;10ms</div>
-    <div style="color: #666;">Senna Routing</div>
-    <div style="font-size: 12px; color: #999;">95%+ accuracy</div>
-  </div>
-
-  <div style="border: 2px solid #4CAF50; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #4CAF50;">87%</div>
-    <div style="color: #666;">Zumbi Detection</div>
-    <div style="font-size: 12px; color: #999;">&lt;5% false positives</div>
-  </div>
-
-  <div style="border: 2px solid #2196F3; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #2196F3;">2-4s</div>
-    <div style="color: #666;">Anita Analysis</div>
-    <div style="font-size: 12px; color: #999;">Full FFT + 9 patterns</div>
-  </div>
-
-  <div style="border: 2px solid #FF9800; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #FF9800;">&lt;3s</div>
-    <div style="color: #666;">Tiradentes Report</div>
-    <div style="font-size: 12px; color: #999;">Multi-format output</div>
-  </div>
-
-  <div style="border: 2px solid #9C27B0; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #9C27B0;">R² 0.85+</div>
-    <div style="color: #666;">Ceuci Prediction</div>
-    <div style="font-size: 12px; color: #999;">MAPE &lt;15%</div>
-  </div>
-
-  <div style="border: 2px solid #E91E63; border-radius: 8px; padding: 15px; text-align: center;">
-    <div style="font-size: 32px; font-weight: bold; color: #E91E63;">&lt;100ms</div>
-    <div style="color: #666;">Nanã Memory</div>
-    <div style="font-size: 12px; color: #999;">95%+ relevance</div>
-  </div>
-
-</div>
+| 🎯 Agent | ⚡ Performance | 📊 Accuracy/Quality |
+|---------|---------------|---------------------|
+| **⚡ Senna** | &lt;10ms routing | 95%+ accuracy |
+| **🕵️ Zumbi** | 3-8s analysis | 87% detection, &lt;5% FP |
+| **📈 Anita** | 2-4s full analysis | 9 pattern types |
+| **📝 Tiradentes** | &lt;3s report | Multi-format (MD/HTML/PDF) |
+| **🔮 Ceuci** | Variable | R² >0.85, MAPE &lt;15% |
+| **🧠 Nanã** | &lt;100ms retrieval | 95%+ relevance |
 
 ---
 
