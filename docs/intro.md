@@ -21,7 +21,7 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 
 ### Stack Tecnológica
 - **FastAPI** - API REST com 40+ endpoints
-- **Sistema Multi-Agente** - 18 agentes especializados (94.4% operacionais)
+- **Sistema Multi-Agente** - 17 agentes especializados (47% operacionais)
 - **PostgreSQL + Redis** - Persistência e cache (Supabase + Railway)
 - **Celery + Beat** - Processamento assíncrono e tarefas agendadas
 - **Railway** - Plataforma de deployment e orquestração

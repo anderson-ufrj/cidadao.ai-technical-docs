@@ -8,7 +8,7 @@ description: "Visão geral do sistema Cidadão.AI - arquitetura multi-agente, de
 
 ## Resumo Executivo
 
-O **Cidadão.AI Backend** é um sistema enterprise de inteligência artificial multi-agente para análise automatizada de transparência governamental brasileira. O sistema implementa uma arquitetura de microserviços distribuídos com **18 agentes especializados** (94.4% operacionais) baseados em modelos de linguagem para análise de dados públicos via 40+ endpoints REST.
+O **Cidadão.AI Backend** é um sistema enterprise de inteligência artificial multi-agente para análise automatizada de transparência governamental brasileira. O sistema implementa uma arquitetura de microserviços distribuídos com **17 agentes especializados** (8 totalmente funcionais = 47% operacionais) baseados em modelos de linguagem para análise de dados públicos via 40+ endpoints REST.
 
 ### Métricas de Performance
 
@@ -16,7 +16,7 @@ O **Cidadão.AI Backend** é um sistema enterprise de inteligência artificial m
 |---------|-------|--------|
 | **Tempo de Resposta** | < 180ms (p95: 145ms) | ✅ |
 | **Uptime (SLA)** | 99.9% | ✅ |
-| **Agentes Operacionais** | 17/18 (94.4%) | ✅ |
+| **Agentes Operacionais** | 8/17 (47%) | ⚠️ |
 | **Endpoints REST** | 40+ | ✅ |
 | **Precisão F1-Score** | 89.2% | ✅ |
 | **Algoritmos ML** | 15+ | ✅ |
@@ -132,11 +132,11 @@ graph TB
     style MASTER fill:#E91E63,stroke:#880E4F,stroke-width:3px
 ```
 
-## 🤖 Sistema Multi-Agente (18 Agents)
+## 🤖 Sistema Multi-Agente (17 Agentes)
 
 ### Hierarquia de Agentes
 
-O sistema implementa **18 agentes especializados** com identidades culturais brasileiras, organizados em 6 camadas funcionais:
+O sistema implementa **17 agentes especializados** com identidades culturais brasileiras, organizados em 6 camadas funcionais:
 
 #### 1. Camada de Orquestração
 
@@ -414,7 +414,7 @@ agent_utilization = Gauge(
 
 ### 1. Arquitetura Multi-Agente Distribuída
 
-Implementação original de sistema com 18 agentes especializados com identidades culturais brasileiras, cada um com expertise específica e protocolos de comunicação assíncrona.
+Implementação original de sistema com 17 agentes especializados com identidades culturais brasileiras, cada um com expertise específica e protocolos de comunicação assíncrona.
 
 ### 2. Ensemble de Algoritmos de Detecção
 

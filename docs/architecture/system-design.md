@@ -8,7 +8,7 @@ description: "Comprehensive architectural documentation of the Cidadão.AI multi
 
 ## Abstract
 
-This document presents a comprehensive architectural analysis of Cidadão.AI, a distributed multi-agent system designed for automated transparency analysis in Brazilian government data. The system implements a microservices architecture with **18 specialized agents** (94.4% operational), employing state-of-the-art machine learning algorithms, natural language processing, and statistical anomaly detection techniques. The architecture achieves horizontal scalability, fault tolerance, and maintains sub-180ms response times (p95: 145ms) while processing millions of public records. Currently deployed on **Railway Platform** with 99.9% uptime SLA.
+This document presents a comprehensive architectural analysis of Cidadão.AI, a distributed multi-agent system designed for automated transparency analysis in Brazilian government data. The system implements a microservices architecture with **17 specialized agents** (8 fully operational = 47%), employing state-of-the-art machine learning algorithms, natural language processing, and statistical anomaly detection techniques. The architecture achieves horizontal scalability, fault tolerance, and maintains sub-180ms response times (p95: 145ms) while processing millions of public records. Currently deployed on **Railway Platform** with 99.9% uptime SLA.
 
 ## 1. Architectural Overview
 
