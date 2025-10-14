@@ -45,3 +45,8 @@ logs/
 # Temporary files
 tmp/
 temp/
+
+# Development tools
+.claude/
+CLAUDE.md
+ML_DOCUMENTATION_GAP_REPORT.md
