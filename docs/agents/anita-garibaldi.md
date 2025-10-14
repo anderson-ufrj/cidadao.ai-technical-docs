@@ -38,7 +38,7 @@ Detecção avançada de padrões e correlações em dados governamentais. Análi
 - **✅ 9 Análises Simultâneas**: Execução paralela com asyncio
 - **✅ Rigor Estatístico**: P-values, confidence intervals, significance testing
 - **✅ Modelagem Preditiva**: Projeções de gastos futuros
-- **✅ Performance**: 2-4s análise completa, <500ms análises individuais
+- **✅ Performance**: 2-4s análise completa, &lt;500ms análises individuais
 
 ## 📋 Estruturas de Dados
 
@@ -680,7 +680,7 @@ anita_strong_correlations_total{threshold="0.7"}
 | **FFT Spectral** | ✅ Automático | ❌ Raramente feito |
 | **Correlações** | ✅ Todas testadas | ⚠️ Apenas suspeitas |
 | **Estatística** | ✅ Rigorosa (p-values) | ⚠️ Varia |
-| **Escalabilidade** | ✅ 500+ records | ❌ <50 típico |
+| **Escalabilidade** | ✅ 500+ records | ❌ &lt;50 típico |
 | **Custo** | 💰 Baixíssimo | 💸 Alto (analista sênior) |
 
 ### Comparação com Zumbi (Investigator)
@@ -729,7 +729,7 @@ anita_strong_correlations_total{threshold="0.7"}
 
 **Deploy**: ✅ 100% Pronto para produção
 **Testes**: ✅ 100% das 9 análises cobertas
-**Performance**: ✅ 2-4s análise completa, <500ms análises individuais
+**Performance**: ✅ 2-4s análise completa, &lt;500ms análises individuais
 **Algoritmos**: ✅ FFT, correlação, tendências, sazonalidade, eficiência
 **Código**: ✅ 61KB (1405 linhas) - Maior agente do sistema
 

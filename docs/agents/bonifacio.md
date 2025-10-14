@@ -158,7 +158,7 @@ PolicyIndicator(
     unit="percentage",
     data_source="DataSUS",
     last_update=datetime(2025, 10, 1),
-    statistical_significance=0.001,  # p<0.001 (altamente significativo)
+    statistical_significance=0.001,  # p&lt;0.001 (altamente significativo)
     trend="improving"
 )
 
@@ -817,7 +817,7 @@ for rec in recommendations:
 # Prioridade: high
 # Impacto esperado: 85%
 # Prazo: immediate
-# Métricas de sucesso: Reduce deviation to <5%
+# Métricas de sucesso: Reduce deviation to &lt;5%
 # ---
 ```
 
@@ -1172,7 +1172,7 @@ priority_sources = ["Portal da Transparência", "IBGE", "DataSUS"]
 
 **Deploy**: ✅ 100% Pronto para produção
 **Testes**: ✅ 100% dos cenários cobertos em `tests/unit/agents/test_bonifacio.py`
-**Performance**: ✅ 3-5s análise completa, <500ms indicadores
+**Performance**: ✅ 3-5s análise completa, &lt;500ms indicadores
 **Escalabilidade**: ✅ Avaliação simultânea de múltiplas políticas
 **Documentação**: ✅ Completa no backend
 

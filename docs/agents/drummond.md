@@ -52,7 +52,7 @@ Geração automática de **comunicações, alertas e notificações multi-canal*
 ```
 Executivo: "Identificadas 12 irregularidades, R$ 5M de impacto."
 Técnico: "Anomalias detectadas: bid rigging (5), price fixing (7).
-          Correlação Pearson r=0.83, p<0.001."
+          Correlação Pearson r=0.83, p&lt;0.001."
 Cidadão: "Foram encontrados 12 casos de contratos suspeitos que
           podem ter desviado R$ 5 milhões do seu dinheiro."
 ```
@@ -153,7 +153,7 @@ priority_queue = heapq.heappush(
 **Funcionalidade**:
 - Teste automático de variações
 - Métricas: CTR, conversão, engajamento
-- Winner selection estatística (p<0.05)
+- Winner selection estatística (p&lt;0.05)
 
 **Exemplo**: Subject line variations para email.
 
@@ -584,7 +584,7 @@ agent = CommunicationAgent()
 4. **🔁 Retry Resiliente** - Exponential backoff, circuit breaker
 5. **📊 Analytics Completo** - CTR, conversion, engagement tracking
 6. **🌐 Multi-idioma Ready** - PT-BR nativo, EN/ES via API
-7. **⚡ Performance** - Processamento <200ms, envio paralelo
+7. **⚡ Performance** - Processamento &lt;200ms, envio paralelo
 
 ### Comparação: Template vs Neural
 
@@ -594,7 +594,7 @@ agent = CommunicationAgent()
 | **Naturalidade** | ⚠️ Estruturado | ✅ Fluido |
 | **Consistência** | ✅ 100% | ⚠️ ~95% |
 | **Personalização** | ⚠️ Limitada | ✅ Alta |
-| **Latência** | ✅ <50ms | ⚠️ 500-2000ms |
+| **Latência** | ✅ &lt;50ms | ⚠️ 500-2000ms |
 | **Custo** | ✅ Baixo | ⚠️ Médio (API) |
 | **Uso** | Alertas, notificações | Relatórios, resumos |
 
@@ -621,7 +621,7 @@ agent = CommunicationAgent()
 
 **Deploy**: ✅ Produção local/Docker - ❌ HuggingFace Spaces (import issue)
 **Testes**: ✅ Core features testados
-**Performance**: ✅ <200ms processamento, envio paralelo eficiente
+**Performance**: ✅ &lt;200ms processamento, envio paralelo eficiente
 **Canais**: ✅ Email e Portal Web - ⚠️ Outros requerem API keys
 **Código**: ✅ 39KB (24 métodos) production-ready
 **Status**: ✅ 95% operacional (Beta)

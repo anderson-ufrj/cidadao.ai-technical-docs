@@ -66,7 +66,7 @@ graph TB
     end
 
     subgraph "🏎️ Camada de Roteamento"
-        SENNA[Senna - Semantic Router<br/>95%+ acurácia, <10ms]
+        SENNA[Senna - Semantic Router<br/>95%+ acurácia, &lt;10ms]
     end
 
     subgraph "🎨 Camada de Orquestração"
@@ -151,7 +151,7 @@ graph TB
 
 **1. [Ayrton Senna](./senna.md) - Semantic Router** ⚡
 - **Função**: Ponto de entrada único, roteamento inteligente de queries
-- **Performance**: <10ms por decisão, 95%+ acurácia, 100+ req/s
+- **Performance**: &lt;10ms por decisão, 95%+ acurácia, 100+ req/s
 - **Estratégias**: Rule-based, semantic similarity, intent detection, fallback
 - **Status**: ✅ **100% Produção**
 
@@ -168,7 +168,7 @@ graph TB
 **3. [Zumbi dos Palmares](./zumbi.md) - Anomaly Detective** 🕵️
 - **Função**: Detecção de anomalias em contratos públicos
 - **Técnicas**: Z-score (2.5σ), FFT spectral, concentração de fornecedores (>70%), contratos similares (>85%)
-- **Performance**: Taxa de detecção 87%, falsos positivos <5%
+- **Performance**: Taxa de detecção 87%, falsos positivos &lt;5%
 - **Status**: ✅ **100% Produção**
 
 **4. [Oxóssi](./oxossi.md) - Fraud Hunter** 🏹
@@ -191,7 +191,7 @@ graph TB
 - **Função**: Análise de padrões temporais e tendências
 - **Tecnologia**: FFT (Fast Fourier Transform), cross-spectral analysis, correlações
 - **Análises**: 9 tipos (spending trends, seasonal, vendor, spectral, correlation, etc.)
-- **Performance**: 2-4s análise completa, <500ms análise individual
+- **Performance**: 2-4s análise completa, &lt;500ms análise individual
 - **Status**: ✅ **100% Produção**
 
 **7. [Lampião](./lampiao.md) - Regional Analyst** 🗺️
@@ -212,7 +212,7 @@ graph TB
 - **Função**: Predições e forecasting com Machine Learning
 - **Modelos**: ARIMA, Prophet, LSTM, Random Forest, XGBoost
 - **Predições**: Budget forecasting, anomaly prediction, trend extrapolation
-- **Acurácia**: MAPE <15%, R² >0.85
+- **Acurácia**: MAPE &lt;15%, R² >0.85
 - **Status**: ✅ **100% Produção**
 
 ---
@@ -249,7 +249,7 @@ graph TB
 - **Formatos**: Markdown, HTML, PDF (base64), JSON, Executive Summary
 - **Audiências**: Technical, Executive, Public (adaptação automática)
 - **Tipos**: 6 tipos de relatório (Investigation, Analysis, Combined, etc.)
-- **Performance**: <3s relatório completo, <100ms executive summary
+- **Performance**: &lt;3s relatório completo, &lt;100ms executive summary
 - **Status**: ✅ **100% Produção**
 
 **14. [Carlos Drummond](./drummond.md) - Communicator** 📣
@@ -257,7 +257,7 @@ graph TB
 - **Canais**: 10 canais (Email, SMS, WhatsApp, Telegram, Slack, Discord, etc.)
 - **Tecnologia**: NLG template-based + Neural (Maritaca AI em Railway)
 - **Features**: Priority queue, circuit breaker, rate limiting, deduplication
-- **Performance**: <2s envio email, <500ms notificação push
+- **Performance**: &lt;2s envio email, &lt;500ms notificação push
 - **Status**: ✅ **95% Beta** (HF Spaces: comentado MaritacaClient, usa templates)
 
 **15. [Oscar Niemeyer](./oscar-niemeyer.md) - Data Visualization** 🎨
@@ -265,7 +265,7 @@ graph TB
 - **Bibliotecas**: Plotly, Matplotlib, Seaborn, Folium (maps)
 - **Tipos**: 15+ tipos de gráficos (line, bar, scatter, heatmap, choropleth, etc.)
 - **Export**: PNG, SVG, HTML interativo, base64 embedding
-- **Performance**: <2s gráfico simples, <5s dashboard complexo
+- **Performance**: &lt;2s gráfico simples, &lt;5s dashboard complexo
 - **Status**: ✅ **100% Produção**
 
 ---
@@ -276,7 +276,7 @@ graph TB
 - **Função**: Gestão de memória episódica, semântica e conversacional
 - **Tecnologia**: ChromaDB para busca vetorial, embedding-based retrieval
 - **Capacidades**: Contexto multi-turno, RAG (Retrieval-Augmented Generation)
-- **Performance**: <100ms recuperação de contexto, 95%+ relevância
+- **Performance**: &lt;100ms recuperação de contexto, 95%+ relevância
 - **Status**: ✅ **100% Produção**
 
 **17. [Marechal Deodoro](./deodoro.md) - Base Architecture** 🏛️
@@ -311,7 +311,7 @@ graph TB
 - **Visualizações** (15+ tipos de gráficos, dashboards)
 
 ### 🧠 Inteligência
-- **Roteamento semântico** (95%+ acurácia, <10ms)
+- **Roteamento semântico** (95%+ acurácia, &lt;10ms)
 - **Orquestração multi-agente** (coordenação, síntese)
 - **Memória contextual** (episódica, semântica, conversacional)
 - **Auto-reflexão** (quality threshold, iterative improvement)
@@ -323,14 +323,14 @@ graph TB
 | Categoria | Métrica | Valor |
 |-----------|---------|-------|
 | **Roteamento** | Acurácia Senna | 95%+ |
-| **Roteamento** | Latência Senna | <10ms (p50: 5ms) |
-| **Detecção** | Taxa Zumbi | 87% detecção, <5% falsos + |
-| **Análise** | Tempo Anita | 2-4s completo, <500ms individual |
-| **Relatórios** | Tempo Tiradentes | <3s completo, <100ms summary |
-| **Predição** | Acurácia Ceuci | MAPE <15%, R² >0.85 |
-| **Memória** | Latência Nanã | <100ms retrieval |
-| **Visualização** | Tempo Oscar | <2s simples, <5s complexo |
-| **Comunicação** | Tempo Drummond | <2s email, <500ms push |
+| **Roteamento** | Latência Senna | &lt;10ms (p50: 5ms) |
+| **Detecção** | Taxa Zumbi | 87% detecção, &lt;5% falsos + |
+| **Análise** | Tempo Anita | 2-4s completo, &lt;500ms individual |
+| **Relatórios** | Tempo Tiradentes | &lt;3s completo, &lt;100ms summary |
+| **Predição** | Acurácia Ceuci | MAPE &lt;15%, R² >0.85 |
+| **Memória** | Latência Nanã | &lt;100ms retrieval |
+| **Visualização** | Tempo Oscar | &lt;2s simples, &lt;5s complexo |
+| **Comunicação** | Tempo Drummond | &lt;2s email, &lt;500ms push |
 | **Cobertura** | Testes | ~80% |
 
 ---

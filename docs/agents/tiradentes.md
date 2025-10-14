@@ -591,7 +591,7 @@ tiradentes_audience_distribution{audience="technical|executive|public"}
 - **HTML generation**: 150-300ms
 - **PDF generation**: 1-3 segundos (depende do tamanho)
 - **JSON generation**: 50-100ms
-- **Executive summary**: <100ms
+- **Executive summary**: &lt;100ms
 
 ### Otimizações
 
@@ -620,7 +620,7 @@ tiradentes_audience_distribution{audience="technical|executive|public"}
 2. **🎯 Adaptação de Audiência** - Técnico, executivo, público
 3. **📊 Estruturação Inteligente** - Seções ordenadas por importância
 4. **🌐 Transparência Pública** - Linguagem acessível para cidadãos
-5. **⚡ Geração Rápida** - <3s para relatórios completos
+5. **⚡ Geração Rápida** - &lt;3s para relatórios completos
 6. **📈 Escalável** - Processamento paralelo de seções
 7. **🔍 Rastreável** - Metadata completo para auditoria
 
@@ -628,7 +628,7 @@ tiradentes_audience_distribution{audience="technical|executive|public"}
 
 | Aspecto | Tiradentes (Automatizado) | Relatório Manual |
 |---------|--------------------------|------------------|
-| **Tempo** | ⚡ <3 segundos | 🐌 Horas/dias |
+| **Tempo** | ⚡ &lt;3 segundos | 🐌 Horas/dias |
 | **Consistência** | ✅ Template fixo | ⚠️ Varia por autor |
 | **Formatos** | ✅ 5 formatos | ⚠️ Geralmente 1-2 |
 | **Audiência** | ✅ 3 adaptações | ❌ Fixo |
@@ -662,7 +662,7 @@ tiradentes_audience_distribution{audience="technical|executive|public"}
 
 **Deploy**: ✅ 100% Pronto para produção
 **Testes**: ✅ 100% dos cenários cobertos
-**Performance**: ✅ <3s geração completa, <100ms executive summary
+**Performance**: ✅ &lt;3s geração completa, &lt;100ms executive summary
 **Formatos**: ✅ Markdown, HTML, PDF, JSON, Executive Summary
 **Código**: ✅ 42KB (30 métodos) production-ready
 

@@ -545,7 +545,7 @@ graph TD
     S -->|Alta confiança 0.9+| D1{Decisão: Route Direto}
     S -->|Média conf. 0.7-0.9| D2{Decisão: Route + Monitor}
     S -->|Baixa conf. 0.5-0.7| D3{Decisão: Suggest Options}
-    S -->|Muito baixa <0.5| D4{Decisão: Ask Clarification}
+    S -->|Muito baixa &lt;0.5| D4{Decisão: Ask Clarification}
 
     D1 --> Z[Zumbi - Anomalias]
     D1 --> A[Anita - Tendências]
@@ -790,7 +790,7 @@ router_config = {
 
 | Aspecto | Senna (Semantic Router) | LLM Direto (GPT-4) | Simple Regex | Hardcoded Rules |
 |---------|-------------------------|---------------------|--------------|-----------------|
-| **Velocidade** | ⚡ <10ms | 🐌 1-2s | ⚡ <1ms | ⚡ <1ms |
+| **Velocidade** | ⚡ &lt;10ms | 🐌 1-2s | ⚡ &lt;1ms | ⚡ &lt;1ms |
 | **Acurácia** | 🎯 95% | 🎯 98% | ⚠️ 70% | ⚠️ 60% |
 | **Custo** | 💰 Baixo ($0.001/query) | 💸 Alto ($0.03/query) | 💰 Grátis | 💰 Grátis |
 | **Flexibilidade** | ✅ Alta (4 estratégias) | ✅ Muito Alta | ⚠️ Baixa | ⚠️ Muito Baixa |
@@ -839,7 +839,7 @@ router_config = {
 
 **Deploy**: ✅ 100% Pronto para produção
 **Testes**: ✅ 100% dos cenários cobertos em `tests/unit/agents/test_ayrton_senna.py`
-**Performance**: ✅ <10ms, 100+ req/s, 95% acurácia
+**Performance**: ✅ &lt;10ms, 100+ req/s, 95% acurácia
 **Escalabilidade**: ✅ Suporta centenas de queries/segundo
 **Documentação**: ✅ Completa no backend
 

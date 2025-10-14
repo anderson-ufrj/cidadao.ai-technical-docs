@@ -32,7 +32,7 @@ const sidebars: SidebarsConfig = {
           label: '🎯 Coordenação',
           items: [
             'agents/senna',
-            'agents/abaporu-master',
+            'agents/abaporu',
           ],
         },
         {
@@ -69,7 +69,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'agents/tiradentes',
             'agents/drummond',
-            'agents/oscar-niemeyer',
+            'agents/niemeyer',
           ],
         },
         {

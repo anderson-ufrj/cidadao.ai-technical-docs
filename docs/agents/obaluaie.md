@@ -251,7 +251,7 @@ async def _apply_benford_law(self, data: List[float]) -> float:
 
     chi_square = np.sum((observed_freq - benford_expected)**2 / benford_expected)
 
-    return chi_square  # > 15.507 = significativo (p<0.05)
+    return chi_square  # > 15.507 = significativo (p&lt;0.05)
 ```
 
 ### Detecção de Cartéis (Planejado)
@@ -451,8 +451,8 @@ data = {
 | **Precisão** | >92% | 🔴 N/A |
 | **Recall** | >88% | 🔴 N/A |
 | **F1-Score** | >0.90 | 🔴 N/A |
-| **Falsos Positivos** | <5% | 🔴 N/A |
-| **Tempo de Análise** | <5s para 1k contratos | 🔴 N/A |
+| **Falsos Positivos** | &lt;5% | 🔴 N/A |
+| **Tempo de Análise** | &lt;5s para 1k contratos | 🔴 N/A |
 
 ## 📞 Próximas Ações Imediatas
 

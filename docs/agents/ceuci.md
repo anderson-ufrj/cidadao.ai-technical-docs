@@ -455,10 +455,10 @@ request = {
 
 | Métrica | Target | Status |
 |---------|--------|--------|
-| **Processamento** | >1M pontos em <30s | 🔴 N/A |
+| **Processamento** | >1M pontos em &lt;30s | 🔴 N/A |
 | **Modelos Simultâneos** | 50+ | 🔴 N/A |
-| **Precisão MAPE** | <5% curto prazo | 🔴 N/A |
-| **Latência** | <2s online | 🔴 N/A |
+| **Precisão MAPE** | &lt;5% curto prazo | 🔴 N/A |
+| **Latência** | &lt;2s online | 🔴 N/A |
 | **Memória** | Até 10GB datasets | 🔴 N/A |
 
 ## 🚀 Roadmap de Implementação

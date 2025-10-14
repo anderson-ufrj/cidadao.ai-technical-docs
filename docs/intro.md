@@ -87,7 +87,7 @@ graph TB
 Nosso sistema implementa **17 agentes especializados** com identidade cultural brasileira, **TODOS 100% OPERACIONAIS**:
 
 ### Agentes Principais
-- **Ayrton Senna** - Roteamento semântico (95%+ acurácia, <10ms)
+- **Ayrton Senna** - Roteamento semântico (95%+ acurácia, &lt;10ms)
 - **Abaporu (Master Orchestrator)** - Coordenação multi-agente
 - **Zumbi dos Palmares** - Detecção de anomalias (87% taxa detecção)
 - **Anita Garibaldi** - Análise de tendências com FFT
