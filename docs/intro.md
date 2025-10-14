@@ -33,6 +33,55 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 - **18** agentes especializados (94.4% operacionais)
 - **24/7** monitoramento autônomo (Celery Beat a cada 6h)
 
+### Arquitetura do Ecossistema
+
+O Cidadão.AI é composto por **4 repositórios integrados** rodando em diferentes plataformas:
+
+```mermaid
+graph TB
+    subgraph "🌐 Produção"
+        subgraph "Railway Platform"
+            API[Backend API<br/>FastAPI + Uvicorn<br/>:8000]
+            Worker[Celery Worker<br/>Async Tasks]
+            Beat[Celery Beat<br/>Scheduler 6h]
+            PG[(PostgreSQL<br/>Supabase)]
+            RD[(Redis<br/>Cache)]
+        end
+
+        subgraph "Vercel"
+            Next[Frontend PWA<br/>Next.js 15]
+        end
+
+        subgraph "GitHub Pages"
+            Docs[Technical Docs<br/>Docusaurus]
+            Hub[Landing Page<br/>Cidadão.AI Hub]
+        end
+    end
+
+    User[👤 Cidadão] --> Next
+    User --> Hub
+    User --> Docs
+
+    Next --> API
+    API --> Worker
+    Beat --> Worker
+    API --> PG
+    API --> RD
+    Worker --> PG
+
+    style API fill:#4CAF50
+    style Worker fill:#2196F3
+    style Beat fill:#FF9800
+    style Next fill:#00BCD4
+    style PG fill:#9C27B0
+    style RD fill:#F44336
+```
+
+**Links de Produção**:
+- 🚀 **Backend API**: [https://cidadao-api-production.up.railway.app](https://cidadao-api-production.up.railway.app)
+- 📚 **Swagger Docs**: [https://cidadao-api-production.up.railway.app/docs](https://cidadao-api-production.up.railway.app/docs)
+- 📖 **ReDoc**: [https://cidadao-api-production.up.railway.app/redoc](https://cidadao-api-production.up.railway.app/redoc)
+
 ## 🤖 Sistema Multi-Agente
 
 Nosso sistema implementa **18 agentes especializados** com identidade cultural brasileira:
@@ -44,10 +93,11 @@ Nosso sistema implementa **18 agentes especializados** com identidade cultural b
 - **Machado de Assis** - Processamento textual
 
 ### Características Inovadoras
-1. **Self-reflection** - Agentes auto-avaliam decisões
+1. **Self-reflection** - Agentes auto-avaliam decisões (threshold 0.8)
 2. **Memória contextual** - Aprendizado contínuo
 3. **Comunicação assíncrona** - Message passing eficiente
 4. **Identidade cultural** - Nomes históricos brasileiros
+5. **Monitoramento 24/7** - Celery tasks autônomos
 
 ## 🧮 Fundamentos Matemáticos
 
