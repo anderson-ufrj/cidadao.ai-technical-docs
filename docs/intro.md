@@ -27,14 +27,15 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 - **Railway** - Plataforma de deployment e orquestração
 
 ### Métricas de Performance
-- **99.9%** disponibilidade SLA
-- **< 180ms** tempo de resposta médio
+- **99.9%** disponibilidade SLA (Railway Platform)
+- **< 180ms** tempo de resposta médio (p95: 145ms)
 - **40+** endpoints REST documentados
-- **17** agentes especializados
+- **18** agentes especializados (94.4% operacionais)
+- **24/7** monitoramento autônomo (Celery Beat a cada 6h)
 
 ## 🤖 Sistema Multi-Agente
 
-Nosso sistema implementa **17 agentes especializados** com identidade brasileira:
+Nosso sistema implementa **18 agentes especializados** com identidade cultural brasileira:
 
 ### Agentes Principais
 - **Abaporu (MasterAgent)** - Coordenação central
@@ -123,7 +124,7 @@ Este sistema multi-agente foi concebido com o propósito de **democratizar o ace
 - **Banco de Dados**: PostgreSQL + Redis + MongoDB
 - **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS, Zustand
 - **API Documentation**: Swagger UI, ReDoc (automático)
-- **Deploy**: Vercel (Frontend), Hugging Face Spaces (Backend API)
+- **Deploy**: Vercel (Frontend), Railway (Backend API)
 - **Internacionalização**: next-intl (Português/Inglês)
 
 ### 🔐 Licenças e Direitos
