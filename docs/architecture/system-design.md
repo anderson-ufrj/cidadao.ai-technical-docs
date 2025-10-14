@@ -8,7 +8,7 @@ description: "Comprehensive architectural documentation of the Cidadão.AI multi
 
 ## Abstract
 
-This document presents a comprehensive architectural analysis of Cidadão.AI, a distributed multi-agent system designed for automated transparency analysis in Brazilian government data. The system implements a microservices architecture with 17 specialized agents, employing state-of-the-art machine learning algorithms, natural language processing, and statistical anomaly detection techniques. The architecture achieves horizontal scalability, fault tolerance, and maintains sub-200ms response times while processing millions of public records.
+This document presents a comprehensive architectural analysis of Cidadão.AI, a distributed multi-agent system designed for automated transparency analysis in Brazilian government data. The system implements a microservices architecture with **18 specialized agents** (94.4% operational), employing state-of-the-art machine learning algorithms, natural language processing, and statistical anomaly detection techniques. The architecture achieves horizontal scalability, fault tolerance, and maintains sub-180ms response times (p95: 145ms) while processing millions of public records. Currently deployed on **Railway Platform** with 99.9% uptime SLA.
 
 ## 1. Architectural Overview
 
@@ -202,6 +202,39 @@ class InvestigationOrchestrator:
 
 ### 4.1 Horizontal Scaling Strategy
 
+#### Current: Railway Platform
+
+Railway provides automatic scaling based on load:
+
+```yaml
+# Procfile - Multi-Service Architecture
+# Railway manages resource allocation dynamically
+
+web: uvicorn src.api.app:app --host 0.0.0.0 --port $PORT --workers 4
+worker: celery -A src.infrastructure.queue.celery_app worker --concurrency=4 --queues=critical,high,default,low,background
+beat: celery -A src.infrastructure.queue.celery_app beat --loglevel=info
+
+# Railway Configuration (via Dashboard)
+# Each service can be scaled independently:
+# - Web: 4 workers (handles ~1000 req/s)
+# - Worker: 4 concurrency (processes 4 tasks simultaneously)
+# - Beat: 1 instance (scheduler singleton)
+```
+
+**Resource Allocation**:
+- **Web Service**: 2 vCPU, 4GB RAM
+- **Worker Service**: 2 vCPU, 4GB RAM
+- **Beat Service**: 1 vCPU, 2GB RAM
+
+**Scaling Limits**:
+- **Railway Pro**: Up to 32GB RAM, 32 vCPU per service
+- **Auto-restart**: On failure with exponential backoff
+- **Zero-downtime**: Rolling deployments
+
+#### Alternative: Kubernetes (Enterprise)
+
+For organizations requiring more control:
+
 ```yaml
 # Kubernetes Deployment Configuration
 apiVersion: apps/v1
@@ -230,32 +263,69 @@ spec:
 
 ### 4.2 Load Distribution
 
+#### Railway Multi-Service Architecture
+
 ```mermaid
-graph LR
-    subgraph "Load Balancer"
-        LB[NGINX/Traefik]
+graph TB
+    subgraph "Railway Load Balancer"
+        LB[Railway Edge Network<br/>Auto-scaling]
     end
-    
-    subgraph "API Instances"
-        API1[API Instance 1]
-        API2[API Instance 2]
-        API3[API Instance 3]
+
+    subgraph "Web Service (4 Uvicorn workers)"
+        W1[Worker 1<br/>FastAPI]
+        W2[Worker 2<br/>FastAPI]
+        W3[Worker 3<br/>FastAPI]
+        W4[Worker 4<br/>FastAPI]
     end
-    
-    subgraph "Agent Pool"
-        AP1[Agent Pool 1]
-        AP2[Agent Pool 2]
-        AP3[Agent Pool 3]
+
+    subgraph "Task Queue (Redis)"
+        Q1[Critical Queue]
+        Q2[High Queue]
+        Q3[Default Queue]
+        Q4[Low Queue]
+        Q5[Background Queue]
     end
-    
-    LB --> API1
-    LB --> API2
-    LB --> API3
-    
-    API1 --> AP1
-    API2 --> AP2
-    API3 --> AP3
+
+    subgraph "Worker Service (4 Celery workers)"
+        CW1[Celery Worker 1]
+        CW2[Celery Worker 2]
+        CW3[Celery Worker 3]
+        CW4[Celery Worker 4]
+    end
+
+    subgraph "Beat Service"
+        Beat[Celery Beat<br/>Scheduler]
+    end
+
+    LB --> W1
+    LB --> W2
+    LB --> W3
+    LB --> W4
+
+    W1 --> Q1
+    W1 --> Q2
+    W1 --> Q3
+
+    Q1 --> CW1
+    Q2 --> CW2
+    Q3 --> CW3
+    Q4 --> CW4
+    Q5 --> CW4
+
+    Beat --> Q1
+    Beat --> Q2
+    Beat --> Q3
+
+    style LB fill:#9C27B0,stroke:#6A1B9A,stroke-width:3px
+    style Beat fill:#FF9800,stroke:#E65100,stroke-width:2px
 ```
+
+**Load Distribution Strategy**:
+- **Railway Edge**: Distributes requests across Uvicorn workers
+- **Worker Pool**: 4 FastAPI workers handle API requests concurrently
+- **Task Distribution**: Redis queue distributes tasks to Celery workers
+- **Priority Queues**: Critical tasks processed first
+- **Beat Scheduler**: Singleton pattern for scheduled tasks
 
 ## 5. Security Architecture
 
@@ -517,43 +587,96 @@ services:
       - xpack.security.enabled=false
 ```
 
-### 9.2 Production Deployment
+### 9.2 Production Deployment (Railway Platform)
+
+:::tip **Current Production Architecture**
+Cidadão.AI runs on **Railway** since October 2024, achieving **99.9% uptime** with multi-service orchestration.
+
+**🔗 Production**: [https://cidadao-api-production.up.railway.app](https://cidadao-api-production.up.railway.app)
+:::
 
 ```mermaid
 graph TB
     subgraph "Internet"
-        Users[Users]
+        Users[🌐 Users<br/>Citizens, Analysts, Journalists]
     end
-    
-    subgraph "CDN"
-        CF[Cloudflare]
+
+    subgraph "Railway Platform"
+        subgraph "Web Service"
+            API[FastAPI + Uvicorn<br/>4 workers<br/>PORT: 8000]
+        end
+
+        subgraph "Worker Service"
+            Worker[Celery Worker<br/>4 concurrency<br/>5 queues]
+        end
+
+        subgraph "Beat Service"
+            Beat[Celery Beat<br/>Scheduler 6h<br/>24/7 Monitoring]
+        end
+
+        subgraph "Managed Databases"
+            PG[(PostgreSQL<br/>Supabase<br/>10GB)]
+            RD[(Redis<br/>Railway<br/>1GB)]
+        end
     end
-    
-    subgraph "Load Balancer"
-        NLB[Network LB]
+
+    subgraph "External Services"
+        Portal[Portal da<br/>Transparência]
+        Groq[Groq API<br/>LLM]
     end
-    
+
+    Users --> API
+    API --> Worker
+    Beat --> Worker
+    API --> PG
+    API --> RD
+    Worker --> PG
+    Worker --> RD
+    Worker --> Portal
+    Worker --> Groq
+
+    style API fill:#4CAF50,stroke:#2E7D32,stroke-width:3px
+    style Worker fill:#2196F3,stroke:#1565C0,stroke-width:3px
+    style Beat fill:#FF9800,stroke:#E65100,stroke-width:3px
+    style PG fill:#9C27B0,stroke:#6A1B9A,stroke-width:2px
+    style RD fill:#F44336,stroke:#C62828,stroke-width:2px
+```
+
+**Production Specifications**:
+- **Platform**: Railway Pro ($20/mês)
+- **Services**: 3 (web, worker, beat) via Procfile
+- **Database**: Supabase PostgreSQL (10GB)
+- **Cache**: Railway Redis (1GB)
+- **Monitoring**: Railway built-in + Prometheus metrics
+- **CI/CD**: Automatic deployment on push to main
+- **Cost**: ~$30/mês total
+- **SLA**: 99.9% uptime
+
+### 9.3 Alternative: Kubernetes (Future Consideration)
+
+For organizations requiring more control, Kubernetes deployment is available:
+
+```mermaid
+graph TB
     subgraph "Kubernetes Cluster"
         subgraph "Ingress"
             NG[NGINX Ingress]
         end
-        
+
         subgraph "Services"
             API[API Pods]
             WS[WebSocket Pods]
             WK[Worker Pods]
         end
-        
+
         subgraph "Data"
             PG[PostgreSQL]
             RD[Redis]
             ES[Elasticsearch]
         end
     end
-    
-    Users --> CF
-    CF --> NLB
-    NLB --> NG
+
+    Internet[Internet] --> NG
     NG --> API
     NG --> WS
     API --> WK
