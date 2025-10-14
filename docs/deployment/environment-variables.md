@@ -189,7 +189,7 @@ APP_VERSION=1.0.0
 ```bash
 # Configuração do servidor
 HOST=0.0.0.0
-PORT=7860  # Padrão HuggingFace Spaces
+PORT=8000  # Railway injeta $PORT automaticamente (dev local: 8000)
 
 # Workers (produção)
 WEB_CONCURRENCY=4
@@ -257,15 +257,28 @@ SENTRY_TRACES_SAMPLE_RATE=0.1
 
 ## ☁️ Deploy e Cloud
 
-### HuggingFace Spaces
+### Railway (Produção Atual)
 
 ```bash
-# Configurações específicas do HF Spaces
-SPACE_ID=neural-thinker/cidadao-ai-backend
-HF_HOME=/data
-GRADIO_SERVER_NAME=0.0.0.0
-GRADIO_SERVER_PORT=7860
+# Configurações específicas do Railway (auto-provisionadas)
+RAILWAY_ENVIRONMENT=production  # Railway injeta automaticamente
+RAILWAY_PROJECT_ID=your-project-id
+RAILWAY_SERVICE_ID=your-service-id
+PORT=$PORT  # Railway injeta port dinâmica (geralmente 8000)
+
+# URLs de produção
+RAILWAY_PUBLIC_DOMAIN=cidadao-api-production.up.railway.app
+API_URL=https://cidadao-api-production.up.railway.app
+
+# Multi-Service (via Procfile)
+# web: uvicorn src.api.app:app --host 0.0.0.0 --port $PORT
+# worker: celery -A src.infrastructure.queue.celery_app worker --loglevel=info
+# beat: celery -A src.infrastructure.queue.celery_app beat --loglevel=info
 ```
+
+:::tip **Railway Variables**
+O Railway injeta automaticamente variáveis como `PORT`, `RAILWAY_ENVIRONMENT`, etc. Configure variáveis adicionais via Dashboard → Settings → Variables.
+:::
 
 ### Docker
 

@@ -8,7 +8,11 @@ description: "Documentação técnica do Cidadão.AI"
 📋 Referência da API
 Documentação completa da API REST com 40+ endpoints organizados por funcionalidade.
 ### 🚀 Base URL
-https://neural-thinker-cidadao-ai-backend.hf.space
+https://cidadao-api-production.up.railway.app
+
+**Produção**: https://cidadao-api-production.up.railway.app
+**Swagger UI**: https://cidadao-api-production.up.railway.app/docs
+**ReDoc**: https://cidadao-api-production.up.railway.app/redoc
 ### 🔑 Autenticação
 Bearer Token JWT via header Authorization
 ### 📄 Principais Endpoints
