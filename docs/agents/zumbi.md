@@ -6,7 +6,7 @@ description: "Agente especializado em detecção de anomalias e irregularidades"
 
 # 🔍 Zumbi dos Palmares - Investigator Agent
 
-:::info **Status: ✅ Totalmente Funcional**
+:::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/zumbi.py` com 100% de funcionalidade e ~94% de cobertura de testes.
 :::
 

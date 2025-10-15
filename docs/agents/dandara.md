@@ -6,7 +6,7 @@ description: "Guardiã da justiça social e equidade nas políticas públicas"
 
 # ⚖️ Dandara dos Palmares - Social Justice Agent
 
-:::info **Status: ✅ Totalmente Funcional**
+:::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/dandara.py` com análise avançada de equidade social e detecção de violações de justiça distributiva.
 :::
 

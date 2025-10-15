@@ -6,7 +6,7 @@ description: "Mestre em análise textual e processamento de linguagem natural"
 
 # 📚 Machado de Assis - Textual Analysis Agent
 
-:::info **Status: ✅ Totalmente Funcional**
+:::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/machado.py` com capacidades avançadas de NLP e análise documental.
 :::
 

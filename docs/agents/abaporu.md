@@ -6,7 +6,7 @@ description: "Agente orquestrador central do sistema multi-agente"
 
 # 🎨 Abaporu - Master Agent
 
-:::info **Status: ✅ Totalmente Funcional**
+:::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/abaporu.py` com capacidades completas de orquestração e auto-reflexão.
 :::
 

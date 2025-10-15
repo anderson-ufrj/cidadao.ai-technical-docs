@@ -6,7 +6,7 @@ description: "Guardiã da memória episódica, semântica e conversacional"
 
 # 🧠 Nanã - Memory Agent
 
-:::info **Status: ✅ Totalmente Funcional**
+:::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/nana.py` com sistema completo de memória multi-camada para contexto e aprendizado contínuo.
 :::
 
