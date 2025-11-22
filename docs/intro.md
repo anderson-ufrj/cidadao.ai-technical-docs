@@ -4,9 +4,9 @@ sidebar_position: 1
 description: "Sistema multi-agente avançado para análise de transparência governamental brasileira"
 ---
 
-# Cidadão.AI Backend
+# Cidadão.AI
 
-Bem-vindo à documentação técnica do **Cidadão.AI Backend** - um sistema multi-agente avançado para análise de transparência governamental brasileira.
+Bem-vindo à documentação técnica do **Cidadão.AI** - um sistema multi-agente avançado para análise de transparência governamental brasileira.
 
 ## 🎯 Visão Geral
 
@@ -26,9 +26,9 @@ O Cidadão.AI é uma plataforma de **inteligência artificial ética** que democ
 - **Celery + Beat** - Processamento assíncrono e tarefas agendadas
 - **Railway** - Plataforma de deployment e orquestração
 
-### Métricas de Performance
-- **99.9%** disponibilidade SLA (Railway Platform)
-- **< 180ms** tempo de resposta médio (p95: 145ms)
+### Métricas de Desempenho
+- **99.9%** disponibilidade SLA (Plataforma Railway)
+- **&lt; 180ms** tempo de resposta médio (p95: 145ms)
 - **40+** endpoints REST documentados
 - **17** agentes especializados (16 produção + 1 beta = 100% operacionais)
 - **24/7** monitoramento autônomo (Celery Beat a cada 6h)
@@ -40,10 +40,10 @@ O Cidadão.AI é composto por **4 repositórios integrados** rodando em diferent
 ```mermaid
 graph TB
     subgraph "🌐 Produção"
-        subgraph "Railway Platform"
-            API[Backend API<br/>FastAPI + Uvicorn<br/>:8000]
-            Worker[Celery Worker<br/>Async Tasks]
-            Beat[Celery Beat<br/>Scheduler 6h]
+        subgraph "Plataforma Railway"
+            API[API Backend<br/>FastAPI + Uvicorn<br/>:8000]
+            Worker[Celery Worker<br/>Tarefas Assíncronas]
+            Beat[Celery Beat<br/>Agendador 6h]
             PG[(PostgreSQL<br/>Supabase)]
             RD[(Redis<br/>Cache)]
         end
@@ -53,8 +53,8 @@ graph TB
         end
 
         subgraph "GitHub Pages"
-            Docs[Technical Docs<br/>Docusaurus]
-            Hub[Landing Page<br/>Cidadão.AI Hub]
+            Docs[Documentação Técnica<br/>Docusaurus]
+            Hub[Página Inicial<br/>Cidadão.AI Hub]
         end
     end
 
@@ -78,8 +78,8 @@ graph TB
 ```
 
 **Links de Produção**:
-- 🚀 **Backend API**: [https://cidadao-api-production.up.railway.app](https://cidadao-api-production.up.railway.app)
-- 📚 **Swagger Docs**: [https://cidadao-api-production.up.railway.app/docs](https://cidadao-api-production.up.railway.app/docs)
+- 🚀 **API Backend**: [https://cidadao-api-production.up.railway.app](https://cidadao-api-production.up.railway.app)
+- 📚 **Documentação Swagger**: [https://cidadao-api-production.up.railway.app/docs](https://cidadao-api-production.up.railway.app/docs)
 - 📖 **ReDoc**: [https://cidadao-api-production.up.railway.app/redoc](https://cidadao-api-production.up.railway.app/redoc)
 
 ## 🤖 Sistema Multi-Agente
@@ -88,7 +88,7 @@ Nosso sistema implementa **17 agentes especializados** com identidade cultural b
 
 ### Agentes Principais
 - **Ayrton Senna** - Roteamento semântico (95%+ acurácia, &lt;10ms)
-- **Abaporu (Master Orchestrator)** - Coordenação multi-agente
+- **Abaporu (Orquestrador Mestre)** - Coordenação multi-agente
 - **Zumbi dos Palmares** - Detecção de anomalias (87% taxa detecção)
 - **Anita Garibaldi** - Análise de tendências com FFT
 - **Tiradentes** - Geração de relatórios multi-formato
@@ -96,12 +96,12 @@ Nosso sistema implementa **17 agentes especializados** com identidade cultural b
 - **Machado de Assis** - Análise textual e NER
 
 ### Características Inovadoras
-1. **Self-reflection** - Agentes auto-avaliam decisões (threshold 0.7-0.8)
+1. **Auto-reflexão** - Agentes auto-avaliam decisões (threshold 0.7-0.8)
 2. **Memória contextual** - ChromaDB com busca vetorial (Nanã)
-3. **Comunicação assíncrona** - Message passing eficiente
+3. **Comunicação assíncrona** - Troca de mensagens eficiente
 4. **Identidade cultural** - 17 nomes históricos brasileiros
-5. **Monitoramento 24/7** - Celery tasks autônomos + Prometheus
-6. **Multi-estratégia** - Rule-based + Semantic similarity + Intent detection
+5. **Monitoramento 24/7** - Tarefas autônomas Celery + Prometheus
+6. **Multi-estratégia** - Baseado em regras + Similaridade semântica + Detecção de intenção
 
 [**📚 Ver todos os 17 agentes →**](./agents/overview.md)
 
@@ -110,25 +110,25 @@ Nosso sistema implementa **17 agentes especializados** com identidade cultural b
 O sistema implementa algoritmos rigorosamente fundamentados:
 
 ### Detecção de Anomalias
-- **Isolation Forest** para detecção não supervisionada
+- **Floresta de Isolamento** para detecção não supervisionada
 - **Z-Score Modificado** com robustez a outliers
-- **Ensemble Methods** com voting ponderado
+- **Métodos de Ensemble** com votação ponderada
 
 ### Análise Temporal
 - **FFT** para detecção de padrões sazonais
-- **Entropy Spectral** para regularidade temporal
-- **LSTM Networks** para predição de tendências
+- **Entropia Espectral** para regularidade temporal
+- **Redes LSTM** para predição de tendências
 
 ## 📊 Validação Experimental
 
 ### Métricas Alcançadas
-| Algoritmo | Precision | Recall | F1-Score |
-|-----------|-----------|--------|----------|
-| **Isolation Forest** | 91.2% | 85.3% | 88.1% |
+| Algoritmo | Precisão | Revocação | F1-Score |
+|-----------|-----------|-----------|----------|
+| **Floresta de Isolamento** | 91.2% | 85.3% | 88.1% |
 | **Z-Score Multivariado** | 86.7% | 92.3% | 89.4% |
 | **Ensemble Combinado** | **94.2%** | **89.1%** | **91.6%** |
 
-### Dataset de Validação
+### Conjunto de Dados de Validação
 - **50.000+** contratos reais do Portal da Transparência
 - **500** casos de anomalias validadas manualmente
 - **15** categorias principais de contratos
@@ -144,7 +144,7 @@ O sistema implementa algoritmos rigorosamente fundamentados:
 ---
 
 :::tip Contribuições Científicas
-Este projeto representa um marco em **sistemas multi-agente** para transparência pública, combinando rigor matemático, performance enterprise e identidade cultural brasileira.
+Este projeto representa um marco em **sistemas multi-agente** para transparência pública, combinando rigor matemático, desempenho empresarial e identidade cultural brasileira.
 :::
 
 ## 🏛️ Sobre o Cidadão.AI
@@ -176,11 +176,11 @@ Este sistema multi-agente foi concebido com o propósito de **democratizar o ace
 
 ### 🧰 Tecnologias Utilizadas
 
-- **Backend API**: Python, FastAPI, LangChain, ChromaDB, FAISS, BERTimbau
+- **API Backend**: Python, FastAPI, LangChain, ChromaDB, FAISS, BERTimbau
 - **Banco de Dados**: PostgreSQL + Redis + MongoDB
-- **Frontend**: Next.js 15, React 19, TypeScript, Tailwind CSS, Zustand
-- **API Documentation**: Swagger UI, ReDoc (automático)
-- **Deploy**: Vercel (Frontend), Railway (Backend API)
+- **Interface Web**: Next.js 15, React 19, TypeScript, Tailwind CSS, Zustand
+- **Documentação API**: Swagger UI, ReDoc (automático)
+- **Implantação**: Vercel (Frontend), Railway (Backend)
 - **Internacionalização**: next-intl (Português/Inglês)
 
 ### 🔐 Licenças e Direitos
