@@ -32,7 +32,31 @@ O Cidadão.AI implementa um pipeline de dados **ETL completo** (Extract, Transfo
 
 ## 🏗️ Arquitetura do Pipeline ETL
 
-### Fluxo Completo
+### Fluxo Simplificado
+
+```mermaid
+flowchart LR
+    EXT[📥 EXTRACT<br/>19+ fontes de dados] --> TRF[⚙️ TRANSFORM<br/>4 etapas]
+    TRF --> LOAD[💾 LOAD<br/>3 camadas cache]
+    LOAD --> AGT[🤖 CONSUME<br/>17 agentes]
+
+    style EXT fill:#a8dadc,stroke:#333,stroke-width:2px,color:#000
+    style TRF fill:#ffd93d,stroke:#333,stroke-width:2px,color:#000
+    style LOAD fill:#61dafb,stroke:#333,stroke-width:2px,color:#000
+    style AGT fill:#ff6b6b,stroke:#333,stroke-width:2px,color:#fff
+```
+
+### Etapas do Pipeline
+
+| Etapa | Componentes | Função | Performance |
+|-------|-------------|--------|-------------|
+| 📥 **Extract** | Portal Transp., PNCP, IBGE, DataSUS, INEP, TCEs (19 fontes) | Coleta de dados públicos | APIs REST |
+| ⚙️ **Transform** | Orchestrator → Dedup → Validation → Enrichment | Processamento e qualidade | 4 estratégias |
+| 💾 **Load** | L1 (Memory) → L2 (Redis) → L3 (PostgreSQL) | Cache multicamada | TTL: 5min/1h/24h |
+| 🤖 **Consume** | 17 agentes especializados | Análises e investigações | Acesso L1 prioritário |
+
+<details>
+<summary><strong>Ver pipeline ETL completo com todas as fontes e transformações</strong></summary>
 
 ```mermaid
 graph TB
@@ -97,6 +121,8 @@ graph TB
     class L1,L2,L3 load
     class ZUMBI,ANITA,LAMPIAO consume
 ```
+
+</details>
 
 ---
 
