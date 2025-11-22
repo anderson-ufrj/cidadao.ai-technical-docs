@@ -70,177 +70,157 @@ Garantindo compliance legal e ética em todas as operações de análise de dado
 
 ## 🏗️ Arquitetura do Ecossistema Completo
 
-### Visão de Alto Nível
+### Visão de Alto Nível - Camadas Principais
 
 ```mermaid
 graph TB
-    subgraph "👤 Usuário"
-        U[Cidadão<br/>Analista<br/>Jornalista<br/>Pesquisador]
+    subgraph "👤 Camada de Usuário"
+        U[Cidadão/Analista/Jornalista]
     end
 
-    subgraph "🌐 Frontend Layer"
-        HUB[🏛️ Hub<br/>Landing Page<br/>Marketing]
-        APP[⚛️ Frontend<br/>Next.js 15 PWA<br/>Vercel Deploy]
-        DOCS[📚 Technical Docs<br/>Docusaurus<br/>Você está aqui]
+    subgraph "🌐 Camada Frontend"
+        HUB[Hub Landing Page]
+        APP[PWA Next.js 15]
+        DOCS[Docs Técnica]
     end
 
-    subgraph "🚂 Railway Platform - Backend Services"
-        subgraph "Web Service (4 workers)"
-            API[🔌 API Gateway<br/>FastAPI<br/>323 endpoints]
-        end
-
-        subgraph "Worker Service (4 concurrency)"
-            WORKER[⚙️ Celery Worker<br/>5 queues<br/>Async processing]
-        end
-
-        subgraph "Beat Service (1 instance)"
-            BEAT[⏰ Celery Beat<br/>Scheduler<br/>24/7 monitoring]
-        end
+    subgraph "🚂 Camada Backend - Railway"
+        API[API FastAPI<br/>323 endpoints]
+        WORKER[Celery Worker<br/>5 filas]
+        BEAT[Celery Beat<br/>Scheduler]
     end
 
-    subgraph "🤖 Multi-Agent System - 17 Agentes"
-        ROUTER[🎯 Senna<br/>Agent Router<br/>Intent Detection]
-        MASTER[👑 Abaporu<br/>Master Orchestrator<br/>Investigation Coordinator]
-
-        subgraph "🔍 Investigação"
-            ZUMBI[⚔️ Zumbi<br/>Anomaly Detective<br/>FFT Analysis]
-            OXOSSI[🏹 Oxóssi<br/>Data Hunter<br/>Fraud Detection]
-            OBALUAIE[🕵️ Obaluaiê<br/>Corruption Detector<br/>Benford's Law]
-        end
-
-        subgraph "📊 Análise"
-            ANITA[📊 Anita<br/>Data Analyst<br/>Statistics]
-            LAMPIAO[🗺️ Lampião<br/>Regional Analyst<br/>Geography]
-            CEUCI[🔮 Ceuci<br/>Predictive AI<br/>ML Pipeline]
-            BONIFACIO[⚖️ Bonifácio<br/>Legal Expert<br/>Lei 14.133/21]
-        end
-
-        subgraph "📝 Processamento"
-            MACHADO[✍️ Machado<br/>Narrative Analyst<br/>NLP]
-            DANDARA[⚖️ Dandara<br/>Social Equity<br/>Gini Analysis]
-            MARIA[🛡️ Maria Quitéria<br/>Security<br/>LGPD Compliance]
-        end
-
-        subgraph "📢 Comunicação"
-            TIRADENTES[📝 Tiradentes<br/>Report Generator<br/>PDF/HTML/MD]
-            DRUMMOND[📢 Drummond<br/>Communicator<br/>NLG Multi-channel]
-            NIEMEYER[🎨 Niemeyer<br/>Data Visualizer<br/>Charts & Graphs]
-        end
-
-        subgraph "🧠 Suporte"
-            NANA[🧠 Nanã<br/>Memory Manager<br/>Context & History]
-            DEODORO[🏗️ Deodoro<br/>Base Framework<br/>ReflectiveAgent]
-        end
+    subgraph "🤖 Sistema Multi-Agente"
+        ROUTER[Senna Router]
+        MASTER[Abaporu Master]
+        AGENTS[16 Agentes Especializados]
     end
 
-    subgraph "💾 Data Layer"
-        PG[(PostgreSQL<br/>Primary DB<br/>Relational)]
-        REDIS[(Redis<br/>Cache Layer<br/>477 integrations)]
+    subgraph "💾 Camada de Dados"
+        PG[(PostgreSQL)]
+        REDIS[(Redis Cache)]
     end
 
-    subgraph "🌐 External APIs (30+)"
-        PORTAL[Portal da<br/>Transparência]
-        IBGE[IBGE<br/>Demografia]
-        DATASUS[DataSUS<br/>Saúde]
-        INEP[INEP<br/>Educação]
-        PNCP[PNCP<br/>Compras]
+    subgraph "🌐 APIs Externas"
+        GOV[APIs Governamentais<br/>30+ fontes]
+        LLM[LLMs Maritaca/Claude]
     end
 
-    subgraph "🤖 LLM Providers"
-        MARITACA[Maritaca AI<br/>Primary<br/>Brazilian Portuguese]
-        ANTHROPIC[Anthropic Claude<br/>Backup<br/>Auto-failover]
-    end
-
-    subgraph "📊 Monitoring"
-        PROM[📊 Prometheus<br/>Metrics]
-        GRAF[📈 Grafana<br/>8 Dashboards]
-    end
-
-    %% User interactions
     U --> APP
     U --> HUB
     U --> DOCS
 
-    %% Frontend to Backend
     HUB --> API
     APP --> API
 
-    %% API routing
     API --> ROUTER
     API --> WORKER
     BEAT --> WORKER
 
-    %% Agent orchestration
     ROUTER --> MASTER
-    ROUTER --> ZUMBI
-    ROUTER --> ANITA
+    MASTER --> AGENTS
 
-    MASTER --> ZUMBI
-    MASTER --> ANITA
-    MASTER --> OXOSSI
-    MASTER --> LAMPIAO
-    MASTER --> TIRADENTES
-
-    %% Agent collaboration
-    ZUMBI --> OXOSSI
-    ANITA --> LAMPIAO
-    ANITA --> CEUCI
-    OXOSSI --> OBALUAIE
-    TIRADENTES --> DRUMMOND
-    TIRADENTES --> NIEMEYER
-
-    %% Support
-    NANA --> MASTER
-    DEODORO -.-> ZUMBI
-    DEODORO -.-> ANITA
-
-    %% Security
-    MARIA -.-> MASTER
-    BONIFACIO -.-> TIRADENTES
-    DANDARA -.-> ANITA
-
-    %% Data access
     API --> PG
     API --> REDIS
     WORKER --> PG
-    WORKER --> REDIS
     MASTER --> PG
-    NANA --> PG
 
-    %% External integrations
-    WORKER --> PORTAL
-    WORKER --> IBGE
-    WORKER --> DATASUS
-    WORKER --> INEP
-    WORKER --> PNCP
+    WORKER --> GOV
+    MASTER --> LLM
 
-    %% LLM integration
-    MASTER --> MARITACA
-    MASTER --> ANTHROPIC
-    DRUMMOND --> MARITACA
-    DRUMMOND --> ANTHROPIC
-
-    %% Monitoring
-    API --> PROM
-    WORKER --> PROM
-    MASTER --> PROM
-    PROM --> GRAF
-
-    %% Styling
-    classDef frontend fill:#61dafb,stroke:#333,stroke-width:2px,color:#000
-    classDef backend fill:#4CAF50,stroke:#333,stroke-width:3px,color:#fff
-    classDef agent fill:#ffd93d,stroke:#333,stroke-width:2px,color:#000
-    classDef data fill:#457b9d,stroke:#333,stroke-width:2px,color:#fff
-    classDef external fill:#a8dadc,stroke:#333,stroke-width:2px,color:#000
-    classDef monitor fill:#e76f51,stroke:#333,stroke-width:2px,color:#fff
+    classDef frontend fill:#61dafb,stroke:#333,stroke-width:2px
+    classDef backend fill:#4CAF50,stroke:#333,stroke-width:2px
+    classDef agent fill:#ffd93d,stroke:#333,stroke-width:2px
+    classDef data fill:#457b9d,stroke:#333,stroke-width:2px
 
     class HUB,APP,DOCS frontend
     class API,WORKER,BEAT backend
-    class ROUTER,MASTER,ZUMBI,ANITA,OXOSSI,LAMPIAO,CEUCI,OBALUAIE,DRUMMOND,TIRADENTES,NIEMEYER,MARIA,BONIFACIO,DANDARA,MACHADO,NANA,DEODORO agent
+    class ROUTER,MASTER,AGENTS agent
     class PG,REDIS data
-    class PORTAL,IBGE,DATASUS,INEP,PNCP,MARITACA,ANTHROPIC external
-    class PROM,GRAF monitor
 ```
+
+### Fluxo de Dados End-to-End
+
+```mermaid
+sequenceDiagram
+    participant U as Usuário
+    participant APP as Frontend PWA
+    participant API as API Gateway
+    participant ROUTER as Senna Router
+    participant MASTER as Abaporu Master
+    participant AGENTS as Agentes Especializados
+    participant DB as PostgreSQL
+    participant CACHE as Redis
+    participant GOV as APIs Gov
+
+    U->>APP: Solicita investigação
+    APP->>API: POST /api/v1/investigations
+    API->>ROUTER: Classifica intent
+    ROUTER->>MASTER: Delega investigação
+    MASTER->>AGENTS: Coordena execução
+    AGENTS->>GOV: Busca dados
+    GOV-->>AGENTS: Retorna dados
+    AGENTS->>DB: Persiste resultados
+    AGENTS->>CACHE: Cacheia análise
+    AGENTS-->>MASTER: Retorna análise
+    MASTER-->>API: Consolida resultados
+    API-->>APP: SSE stream response
+    APP-->>U: Exibe resultados
+```
+
+<details>
+<summary><strong>📊 Diagrama Detalhado dos 17 Agentes</strong> (clique para expandir)</summary>
+
+```mermaid
+graph LR
+    subgraph "🎯 Coordenação"
+        S[Senna Router]
+        A[Abaporu Master]
+    end
+
+    subgraph "🔍 Investigação"
+        Z[Zumbi - Anomalias]
+        O[Oxóssi - Fraudes]
+        OB[Obaluaiê - Corrupção]
+    end
+
+    subgraph "📊 Análise"
+        AN[Anita - Tendências]
+        L[Lampião - Regional]
+        C[Ceuci - Preditiva]
+        B[Bonifácio - Políticas]
+    end
+
+    subgraph "📝 Processamento"
+        M[Machado - NLP]
+        D[Dandara - Equidade]
+        MQ[Maria - Segurança]
+    end
+
+    subgraph "📢 Comunicação"
+        T[Tiradentes - Relatórios]
+        DR[Drummond - NLG]
+        N[Niemeyer - Visualização]
+    end
+
+    subgraph "🧠 Suporte"
+        NA[Nanã - Memória]
+        DE[Deodoro - Base]
+    end
+
+    S --> A
+    A --> Z
+    A --> AN
+    A --> T
+
+    Z --> O
+    O --> OB
+    AN --> L
+    AN --> C
+    T --> DR
+    T --> N
+```
+</details>
 
 ---
 
