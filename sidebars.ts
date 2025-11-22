@@ -114,9 +114,9 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
-        'monitoring/overview',
-        'monitoring/grafana-prometheus',
-        'monitoring/grafana-dashboards',
+        'monitoramento/overview',
+        'monitoramento/grafana-prometheus',
+        'monitoramento/grafana-dashboards',
       ],
     },
     {
@@ -125,8 +125,8 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
-        'security/overview',
-        'security/oauth-configuration',
+        'seguranca/overview',
+        'seguranca/oauth-configuration',
       ],
     },
     {
@@ -135,29 +135,29 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
-        'deployment/railway',
-        'deployment/variaveis-ambiente',
-        'deployment/docker',
-        'deployment/environment-variables',
-        'deployment/deployment-guide',
+        'implantacao/railway',
+        'implantacao/variaveis-ambiente',
+        'implantacao/docker',
+        'implantacao/environment-variables',
+        'implantacao/deployment-guide',
       ],
     },
     {
       type: 'category',
-      label: '🧪 Testing',
+      label: '🧪 Testes',
       collapsible: true,
       collapsed: true,
       items: [
-        'testing/overview',
+        'testes/overview',
       ],
     },
     {
       type: 'category',
-      label: '🎨 Frontend',
+      label: '🎨 Interface (Frontend)',
       collapsible: true,
       collapsed: true,
       items: [
-        'frontend/overview',
+        'interface/overview',
       ],
     },
     {
