@@ -89,7 +89,10 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'api/visao-geral',
+        'api/overview',
         'api/autenticacao',
+        'api/streaming-sse',
+        'api/apis-governamentais',
         {
           type: 'category',
           label: 'Endpoints',
@@ -112,6 +115,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         'monitoring/overview',
+        'monitoring/grafana-prometheus',
         'monitoring/grafana-dashboards',
       ],
     },
@@ -131,8 +135,29 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: true,
       items: [
+        'deployment/railway',
+        'deployment/variaveis-ambiente',
+        'deployment/docker',
         'deployment/environment-variables',
         'deployment/deployment-guide',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🧪 Testing',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'testing/overview',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🎨 Frontend',
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'frontend/overview',
       ],
     },
     {
