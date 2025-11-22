@@ -84,7 +84,84 @@ Os 17 agentes estão organizados em **6 camadas funcionais**:
 
 ## 🏗️ Arquitetura de Agentes
 
-### Diagrama de Hierarquia Completa
+### Visão Simplificada das Camadas
+
+```mermaid
+graph TB
+    subgraph "🎯 Coordenação (2 agentes)"
+        MASTER[👑 Abaporu - Master]
+        ROUTER[🏎️ Senna - Router]
+    end
+
+    subgraph "🔍 Investigação (3 agentes)"
+        INV[⚔️ Zumbi | 🏹 Oxóssi | 🕵️ Obaluaiê]
+    end
+
+    subgraph "📊 Análise (4 agentes)"
+        ANA[📊 Anita | 🗺️ Lampião | ⚖️ Bonifácio | 🔮 Céuci]
+    end
+
+    subgraph "📝 Processamento (3 agentes)"
+        PROC[✍️ Machado | ⚖️ Dandara | 🛡️ Maria Quitéria]
+    end
+
+    subgraph "📢 Comunicação (3 agentes)"
+        COM[📝 Tiradentes | 📢 Drummond | 🎨 Niemeyer]
+    end
+
+    subgraph "🧠 Suporte (2 agentes)"
+        SUP[🧠 Nanã - Memory | 🏗️ Deodoro - Framework]
+    end
+
+    ROUTER --> MASTER
+    MASTER --> INV
+    MASTER --> ANA
+    INV --> COM
+    ANA --> COM
+    PROC --> COM
+    SUP -.-> MASTER
+
+    classDef coord fill:#ff6b6b,stroke:#333,stroke-width:3px,color:#fff
+    classDef inv fill:#ffd93d,stroke:#333,stroke-width:2px,color:#000
+    classDef ana fill:#a8dadc,stroke:#333,stroke-width:2px,color:#000
+    classDef proc fill:#e76f51,stroke:#333,stroke-width:2px,color:#fff
+    classDef com fill:#61dafb,stroke:#333,stroke-width:2px,color:#000
+    classDef sup fill:#ddd,stroke:#333,stroke-width:2px,color:#000
+
+    class MASTER,ROUTER coord
+    class INV inv
+    class ANA ana
+    class PROC proc
+    class COM com
+    class SUP sup
+```
+
+### Fluxo de Comunicação Entre Camadas
+
+```mermaid
+flowchart LR
+    A[👤 Usuário] --> B[🏎️ Senna Router]
+    B --> C[👑 Abaporu Master]
+    C --> D[🔍 Investigação]
+    C --> E[📊 Análise]
+    D --> F[📝 Processamento]
+    E --> F
+    F --> G[📢 Comunicação]
+    G --> H[📄 Relatório]
+    H --> A
+
+    style A fill:#e1f5ff
+    style B fill:#ff6b6b
+    style C fill:#ff6b6b
+    style D fill:#ffd93d
+    style E fill:#a8dadc
+    style F fill:#e76f51
+    style G fill:#61dafb
+    style H fill:#95e1d3
+```
+
+<details>
+<summary><strong>Ver diagrama detalhado com todos os 17 agentes e conexões completas</strong></summary>
 
 ```mermaid
 graph TD
@@ -94,7 +171,7 @@ graph TD
     end
 
     subgraph "🔍 Camada de Investigação"
-        ZUMBI[⚔️ Zumbi<br/>Anomaly Detective<br/>━━━━━━━━━━<br/>FFT Spectral Analysis<br/>Z-score > 2.5<br/>Pattern recognition]
+        ZUMBI[⚔️ Zumbi<br/>Anomaly Detective<br/>━━━━━━━━━━<br/>FFT Spectral Analysis<br/>Z-score &gt; 2.5<br/>Pattern recognition]
 
         OXOSSI[🏹 Oxóssi<br/>Fraud Hunter<br/>━━━━━━━━━━<br/>Bid rigging<br/>Price fixing<br/>Phantom vendors]
 
@@ -187,6 +264,8 @@ graph TD
     class TIRADENTES,DRUMMOND,NIEMEYER communication
     class NANA,DEODORO support
 ```
+
+</details>
 
 ---
 
@@ -284,6 +363,49 @@ class AgentState(Enum):
 
 ## 🔁 Fluxo de Investigação Completo
 
+### Visão Simplificada do Fluxo de Investigação
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as 👤 Cidadão
+    participant App as ⚛️ Frontend
+    participant API as 🔌 API
+    participant Senna as 🏎️ Senna
+    participant Abaporu as 👑 Abaporu
+    participant Agents as 🤖 Agentes<br/>(Zumbi, Anita, Oxóssi)
+    participant Report as 📝 Tiradentes
+
+    User->>App: "Investigar contratos > R$ 1M"
+    App->>API: POST /api/v1/chat
+    API->>Senna: route_intent()
+    Senna->>Abaporu: delegate_investigation()
+
+    par Análise Paralela
+        Abaporu->>Agents: detect_anomalies()
+        Abaporu->>Agents: analyze_trends()
+    end
+
+    Agents-->>Abaporu: resultados consolidados
+    Abaporu->>Report: generate_report()
+    Report-->>App: SSE stream (updates progressivos)
+    App-->>User: 📊 Relatório completo
+
+    Note over User,Report: Tempo Total: ~3.2s | 5 Agentes | Quality: 0.87+
+```
+
+### Principais Etapas do Processo
+
+1. **Roteamento**: Senna detecta intenção e seleciona agentes
+2. **Orquestração**: Abaporu coordena múltiplos agentes em paralelo
+3. **Auto-Reflexão**: Agentes validam qualidade (threshold: 0.8)
+4. **Consolidação**: Abaporu agrega resultados
+5. **Reporting**: Tiradentes gera relatório final
+6. **Streaming**: SSE envia updates progressivos ao frontend
+
+<details>
+<summary><strong>Ver sequência detalhada com todos os passos, estados e interações</strong></summary>
+
 ### Caso de Uso: Investigação de Contratos de Saúde > R$ 1M
 
 ```mermaid
@@ -327,15 +449,15 @@ sequenceDiagram
     Zumbi->>Redis: check_cache(contract_hash)
     Redis-->>Zumbi: cache_miss
 
-    Note over Zumbi: State: ACTING<br/>FFT Spectral Analysis:<br/>- Frequency patterns<br/>- Statistical outliers<br/>- Z-score > 2.5
+    Note over Zumbi: State: ACTING<br/>FFT Spectral Analysis:<br/>- Frequency patterns<br/>- Statistical outliers<br/>- Z-score &gt; 2.5
 
     Zumbi->>Zumbi: self.reflect(result)
 
-    Note over Zumbi: Quality: 0.73 < 0.8<br/>Retry Count: 1/3<br/>Improvement: Adjust threshold
+    Note over Zumbi: Quality: 0.73 &lt; 0.8<br/>Retry Count: 1/3<br/>Improvement: Adjust threshold
 
     Zumbi->>Zumbi: retry_with_improvements()
 
-    Note over Zumbi: Quality: 0.87 > 0.8 ✓<br/>State: COMPLETED
+    Note over Zumbi: Quality: 0.87 &gt; 0.8 ✓<br/>State: COMPLETED
 
     Zumbi->>Redis: store_results(TTL: 1h)
     Zumbi-->>Abaporu: 47 anomalies detected (confidence: 0.87)
@@ -367,6 +489,8 @@ sequenceDiagram
 
     Note over User,DB: Total Time: ~3.2s<br/>Agents Used: 5<br/>Reflection Iterations: 1<br/>Cache Hit: 0%, Stored for future
 ```
+
+</details>
 
 ---
 
