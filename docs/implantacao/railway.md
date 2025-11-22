@@ -340,8 +340,8 @@ railway variables
 **Location**: Dashboard → Metrics
 
 **Métricas disponíveis**:
-- **CPU Usage**: Uso de processador (target: <70%)
-- **Memory Usage**: Uso de memória (target: <80%)
+- **CPU Usage**: Uso de processador (target: &lt;70%)
+- **Memory Usage**: Uso de memória (target: &lt;80%)
 - **Network**: Tráfego entrada/saída
 - **Request Rate**: Requests por segundo
 - **Response Time**: Latência (p50, p95, p99)

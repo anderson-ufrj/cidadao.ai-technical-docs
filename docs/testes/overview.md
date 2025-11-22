@@ -14,11 +14,11 @@ O Cidadão.AI mantém uma suite de testes abrangente com **76.29% de cobertura**
 
 | Métrica | Valor | Target | Status |
 |---------|-------|--------|--------|
-| **Test Coverage** | 76.29% | >80% | ⚠️ Perto do target |
+| **Test Coverage** | 76.29% | &gt;80% | ⚠️ Perto do target |
 | **Tests Passing** | 97.4% (1,474/1,514) | 100% | ✅ Excelente |
 | **Test Files** | 149 arquivos | - | ✅ Completo |
 | **Test Functions** | 2,059+ funções | - | ✅ Abrangente |
-| **Execution Time** | ~45s (unit) | <60s | ✅ Rápido |
+| **Execution Time** | ~45s (unit) | &lt;60s | ✅ Rápido |
 
 ## Arquitetura de Testes
 
@@ -74,7 +74,7 @@ tests/
 **Objetivo**: Testar componentes individuais em isolamento
 
 **Characteristics**:
-- Rápidos (<1ms por teste)
+- Rápidos (&lt;1ms por teste)
 - Sem dependências externas (mocks/stubs)
 - Alto coverage (>90% para agents Tier 1)
 

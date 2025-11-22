@@ -75,7 +75,7 @@ make monitoring-logs
 **Painéis**:
 - **Request Rate**: Requests/segundo (target: >100 req/s)
 - **Response Time**: p50, p95, p99 latency
-- **Error Rate**: 4xx/5xx errors (target: <1%)
+- **Error Rate**: 4xx/5xx errors (target: &lt;1%)
 - **Active Investigations**: Count em tempo real
 - **Agent Status**: 17/17 operational
 - **Cache Hit Rate**: L1, L2, L3 (target: >85%)
@@ -108,10 +108,10 @@ rate(cache_hits_total[5m]) / rate(cache_requests_total[5m])
 **Key Metrics**:
 | Metric | Target | Alert Threshold |
 |--------|--------|-----------------|
-| p50 Latency | <80ms | >150ms |
-| p95 Latency | <145ms | >300ms |
-| p99 Latency | <500ms | >1000ms |
-| Error Rate | <1% | >5% |
+| p50 Latency | &lt;80ms | &gt;150ms |
+| p95 Latency | &lt;145ms | &gt;300ms |
+| p99 Latency | &lt;500ms | &gt;1000ms |
+| Error Rate | &lt;1% | &gt;5% |
 
 ### 3. Agents Dashboard
 

@@ -162,11 +162,11 @@ response = await zumbi.process(message)
 ### Indicadores de Qualidade
 | Métrica | Valor Atual | Meta | Status |
 |---------|-------------|------|--------|
-| **Cobertura de Testes** | 96% | >90% | ✅ Tier 1 |
-| Taxa de Detecção | 87% | >85% | ✅ |
-| Falsos Positivos | 4.2% | <5% | ✅ |
-| Tempo de Resposta (p95) | 1.8s | <2s | ✅ |
-| Precisão | 91% | >90% | ✅ |
+| **Cobertura de Testes** | 96% | &gt;90% | ✅ Tier 1 |
+| Taxa de Detecção | 87% | &gt;85% | ✅ |
+| Falsos Positivos | 4.2% | &lt;5% | ✅ |
+| Tempo de Resposta (p95) | 1.8s | &lt;2s | ✅ |
+| Precisão | 91% | &gt;90% | ✅ |
 | **Reflection Threshold** | 0.8 | - | ⚙️ Auto-melhoria |
 | **Max Iterations** | 3 | - | ⚙️ Quality control |
 

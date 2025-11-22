@@ -180,11 +180,11 @@ async def pipeline_investigation(self, stages):
 ### KPIs Operacionais
 | Métrica | Valor | Meta | Status |
 |---------|-------|------|--------|
-| **Cobertura de Testes** | 86% | >80% | ✅ Tier 2 |
-| Taxa de Sucesso | 94% | >90% | ✅ |
-| Tempo Médio (investigação) | 98s | <120s | ✅ |
-| Reflexões Necessárias | 12% | <15% | ✅ |
-| Qualidade Média | 0.91 | >0.85 | ✅ |
+| **Cobertura de Testes** | 86% | &gt;80% | ✅ Tier 2 |
+| Taxa de Sucesso | 94% | &gt;90% | ✅ |
+| Tempo Médio (investigação) | 98s | &lt;120s | ✅ |
+| Reflexões Necessárias | 12% | &lt;15% | ✅ |
+| Qualidade Média | 0.91 | &gt;0.85 | ✅ |
 | **Reflection Threshold** | 0.8 | - | ⚙️ Auto-melhoria |
 | **Max Iterations** | 3 | - | ⚙️ Quality control |
 

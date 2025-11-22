@@ -21,13 +21,13 @@ O **Cidadão.AI** é um sistema enterprise de inteligência artificial multi-age
 | Métrica | Valor | Target | Status |
 |---------|-------|--------|--------|
 | **Uptime (Railway)** | 99.9% | 99.9% | ✅ Excellent |
-| **Latência p50** | 80ms | <100ms | ✅ Exceeds |
-| **Latência p95** | 145ms | <200ms | ✅ Excellent |
+| **Latência p50** | 80ms | &lt;100ms | ✅ Exceeds |
+| **Latência p95** | 145ms | &lt;200ms | ✅ Excellent |
 | **Throughput** | 1,000 req/s | 1,000 req/s | ✅ Target Met |
-| **Agent Import Time** | 3.81ms | <100ms | ✅ 367x faster (lazy loading) |
+| **Agent Import Time** | 3.81ms | &lt;100ms | ✅ 367x faster (lazy loading) |
 | **Agentes Operacionais** | 16/17 (94.1%) | 100% | 🟡 Near Complete |
 | **Test Coverage** | 76.29% | 80% | 🟡 Near Target |
-| **Tests Passing** | 97.4% (1,474/1,514) | >95% | ✅ Excellent |
+| **Tests Passing** | 97.4% (1,474/1,514) | &gt;95% | ✅ Excellent |
 | **API Endpoints** | 323 | - | ✅ Production |
 
 ### Stack Tecnológica

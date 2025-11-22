@@ -613,7 +613,7 @@ def __getattr__(name: str):
 ```
 
 **Benefícios**:
-- ⚡ **Startup 367x mais rápido** - API inicia em <4ms ao invés de 1.5s
+- ⚡ **Startup 367x mais rápido** - API inicia em &lt;4ms ao invés de 1.5s
 - 💾 **86% menos memória** - Só carrega agentes quando necessário
 - 🔄 **Cache automático** - Primeira chamada carrega, demais usam cache
 - 🎯 **Zero overhead** - Após primeira chamada, performance idêntica ao eager loading
@@ -634,7 +634,7 @@ def __getattr__(name: str):
 
 | Tier | Agentes | Coverage Médio | Status |
 |------|---------|----------------|---------|
-| **Tier 1** | 10 agentes | >88% | ✅ Excelente |
+| **Tier 1** | 10 agentes | &gt;88% | ✅ Excelente |
 | **Tier 2** | 5 agentes | 81-86% | ⚠️ Bom |
 | **Tier 3** | 1 agente | 86% | ✅ Framework ready |
 

@@ -246,7 +246,7 @@ git push origin main
 
 | Metric | Score | Target |
 |--------|-------|--------|
-| **Performance** | 97 | >90 |
+| **Performance** | 97 | &gt;90 |
 | **Accessibility** | 100 | 100 |
 | **Best Practices** | 100 | 100 |
 | **SEO** | 100 | 100 |
@@ -254,7 +254,7 @@ git push origin main
 
 ### Bundle Size
 
-- **First Load JS**: ~350KB (target: <400KB)
+- **First Load JS**: ~350KB (target: &lt;400KB)
 - **Total Bundle**: ~1.2MB (optimized)
 
 ## Próximas Features (18% Restante)
