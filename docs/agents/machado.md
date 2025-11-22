@@ -1,10 +1,10 @@
 ---
-title: "Machado de Assis - Textual Analysis Agent"
+title: "Machado de Assis - Agente de Análise Textual"
 sidebar_position: 7
 description: "Mestre em análise textual e processamento de linguagem natural"
 ---
 
-# 📚 Machado de Assis - Textual Analysis Agent
+# 📚 Machado de Assis - Agente de Análise Textual
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/machado.py` com capacidades avançadas de NLP e análise documental.

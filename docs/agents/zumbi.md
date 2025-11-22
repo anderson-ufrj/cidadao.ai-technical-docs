@@ -1,10 +1,10 @@
 ---
-title: "Zumbi dos Palmares - Investigator Agent"
+title: "Zumbi dos Palmares - Agente Investigador"
 sidebar_position: 2
 description: "Agente especializado em detecção de anomalias e irregularidades"
 ---
 
-# 🔍 Zumbi dos Palmares - Investigator Agent
+# 🔍 Zumbi dos Palmares - Agente Investigador
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/zumbi.py` (842 linhas) com **96% de cobertura de testes**.

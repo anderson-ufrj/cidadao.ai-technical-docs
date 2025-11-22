@@ -1,10 +1,10 @@
 ---
-title: "Nanã - Memory Agent"
+title: "Nanã - Agente de Memória"
 sidebar_position: 6
 description: "Guardiã da memória episódica, semântica e conversacional"
 ---
 
-# 🧠 Nanã - Memory Agent
+# 🧠 Nanã - Agente de Memória
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/nana.py` com sistema completo de memória multi-camada para contexto e aprendizado contínuo.

@@ -1,10 +1,10 @@
 ---
-title: "Multi-Agent System Overview"
+title: "Visão Geral do Sistema Multi-Agente"
 sidebar_position: 1
 description: "Comprehensive overview of the distributed multi-agent architecture"
 ---
 
-# Multi-Agent System Overview
+# Visão Geral do Sistema Multi-Agente
 
 ## Abstract
 

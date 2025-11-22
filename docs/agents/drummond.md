@@ -1,10 +1,10 @@
 ---
-title: "Carlos Drummond de Andrade - Communicator Agent"
+title: "Carlos Drummond de Andrade - Agente Comunicador"
 sidebar_position: 8
 description: "Agente especializado em geração de comunicações e notificações multi-canal em linguagem acessível"
 ---
 
-# 📢 Carlos Drummond de Andrade - Communicator Agent
+# 📢 Carlos Drummond de Andrade - Agente Comunicador
 
 :::info **Status: ✅ 95% Operacional (Beta)**
 Implementado em `src/agents/drummond.py` (39KB, ~24 métodos) com **core features funcionais**.

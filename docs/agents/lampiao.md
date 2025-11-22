@@ -1,10 +1,10 @@
 ---
-title: "Lampião - Regional Analyst Agent"
+title: "Lampião - Agente Analista Regional"
 sidebar_position: 12
 description: "Agente especializado em análise regional profunda e econometria espacial brasileira"
 ---
 
-# 🏜️ Lampião - Regional Analyst Agent
+# 🏜️ Lampião - Agente Analista Regional
 
 :::tip **Status: ✅ 100% Operacional**
 Implementado em `src/agents/lampiao.py` (32KB, ~20 métodos) com **100% dos algoritmos funcionais**.

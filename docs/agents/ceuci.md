@@ -1,10 +1,10 @@
 ---
-title: "Ceuci - Predictive Analysis Agent"
+title: "Ceuci - Agente de Análise Preditiva"
 sidebar_position: 10
 description: "Agente especializado em análise preditiva e modelagem de tendências"
 ---
 
-# 🔮 Ceuci - Predictive Analysis Agent
+# 🔮 Ceuci - Agente de Análise Preditiva
 
 :::warning **Status: 🚧 10% Em Desenvolvimento**
 Implementado em `src/agents/ceuci.py` (595 linhas) com **documentação inline excepcional** mas todos os métodos principais são TODOs.

@@ -1,10 +1,10 @@
 ---
-title: "Deodoro da Fonseca - Base Agent Architecture"
+title: "Deodoro da Fonseca - Arquitetura Base dos Agentes"
 sidebar_position: 2
 description: "Fundador da arquitetura multi-agente - classe base para todos os agentes"
 ---
 
-# 🏛️ Deodoro da Fonseca - Base Agent Architecture
+# 🏛️ Deodoro da Fonseca - Arquitetura Base dos Agentes
 
 :::tip **Status: ✅ 100% Operacional**
 Implementado em `src/agents/deodoro.py` (647 linhas) com **arquitetura sólida e production-ready**.

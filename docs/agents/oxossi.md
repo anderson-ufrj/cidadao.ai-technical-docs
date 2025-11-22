@@ -1,10 +1,10 @@
 ---
-title: "Oxóssi - Fraud Hunter Agent"
+title: "Oxóssi - Agente Caçador de Fraudes"
 sidebar_position: 11
 description: "Agente especializado em detecção e rastreamento de fraudes em contratos governamentais"
 ---
 
-# 🏹 Oxóssi - Fraud Hunter Agent
+# 🏹 Oxóssi - Agente Caçador de Fraudes
 
 :::tip **Status: ✅ 100% Operacional**
 Implementado em `src/agents/oxossi.py` (39KB, ~20 métodos) com **100% dos algoritmos funcionais**.

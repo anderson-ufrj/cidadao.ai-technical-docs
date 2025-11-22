@@ -1,10 +1,10 @@
 ---
-title: "Abaporu - Master Agent"
+title: "Abaporu - Agente Orquestrador"
 sidebar_position: 1  
 description: "Agente orquestrador central do sistema multi-agente"
 ---
 
-# 🎨 Abaporu - Master Agent
+# 🎨 Abaporu - Agente Orquestrador
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/abaporu.py` (1.247 linhas) com **86% de cobertura de testes**.

@@ -1,10 +1,10 @@
 ---
-title: "Dandara dos Palmares - Social Justice Agent"
+title: "Dandara dos Palmares - Agente de Justiça Social"
 sidebar_position: 8
 description: "Guardiã da justiça social e equidade nas políticas públicas"
 ---
 
-# ⚖️ Dandara dos Palmares - Social Justice Agent
+# ⚖️ Dandara dos Palmares - Agente de Justiça Social
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementado em `src/agents/dandara.py` com análise avançada de equidade social e detecção de violações de justiça distributiva.
@@ -63,7 +63,7 @@ class DandaraAgent(BaseAgent):
     def __init__(self):
         super().__init__(
             name="dandara",
-            description="Social Justice Agent for equity monitoring",
+            description="Agente de Justiça Social for equity monitoring",
             capabilities=[
                 "social_equity_analysis",
                 "inclusion_policy_monitoring",

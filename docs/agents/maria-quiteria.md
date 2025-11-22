@@ -1,10 +1,10 @@
 ---
-title: "Maria Quitéria - Security Guardian Agent"
+title: "Maria Quitéria - Agente Guardião de Segurança"
 sidebar_position: 13
 description: "Agente especializado em segurança, detecção de intrusões e auditoria de compliance"
 ---
 
-# 🛡️ Maria Quitéria - Security Guardian Agent
+# 🛡️ Maria Quitéria - Agente Guardião de Segurança
 
 :::info **Status: ✅ 95% Operacional (Beta)**
 Implementado em `src/agents/maria_quiteria.py` (32KB, ~20 métodos) com **sistemas complexos funcionais**.

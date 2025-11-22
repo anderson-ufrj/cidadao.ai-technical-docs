@@ -1,10 +1,10 @@
 ---
-title: "Obaluaiê - Corruption Detector Agent"
+title: "Obaluaiê - Agente Detector de Corrupção"
 sidebar_position: 12
 description: "Agente especializado em detecção avançada de corrupção sistêmica"
 ---
 
-# 🏥 Obaluaiê - Corruption Detector Agent
+# 🏥 Obaluaiê - Agente Detector de Corrupção
 
 :::warning **Status: 🚧 15% Em Desenvolvimento**
 Implementado em `src/agents/obaluaie.py` (236 linhas) com framework excelente mas algoritmos principais pendentes.

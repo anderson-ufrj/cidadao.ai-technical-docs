@@ -1,10 +1,10 @@
 ---
-title: "José Bonifácio - Policy Effectiveness Agent"
+title: "José Bonifácio - Agente de Efetividade de Políticas"
 sidebar_position: 9
 description: "Arquiteto das Reformas Institucionais - Avaliação científica de efetividade de políticas públicas"
 ---
 
-# ⚖️ José Bonifácio - Policy Effectiveness Agent
+# ⚖️ José Bonifácio - Agente de Efetividade de Políticas
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementação completa em `src/agents/bonifacio.py` (26KB, ~20 métodos). Testes unitários ✅. Zero TODOs, zero NotImplementedError. Pronto para uso em produção.

@@ -1,10 +1,10 @@
 ---
-title: "Tiradentes - Reporter Agent"
+title: "Tiradentes - Agente Repórter"
 sidebar_position: 4
 description: "Agente especializado em geração automática de relatórios em linguagem natural a partir de investigações e análises"
 ---
 
-# 📝 Tiradentes - Reporter Agent
+# 📝 Tiradentes - Agente Repórter
 
 :::tip **Status: ✅ 100% Operacional**
 Implementado em `src/agents/tiradentes.py` (42KB, ~30 métodos) com **100% funcional**.

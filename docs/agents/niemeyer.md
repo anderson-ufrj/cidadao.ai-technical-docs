@@ -1,10 +1,10 @@
 ---
-title: "Oscar Niemeyer - Data Visualization Agent"
+title: "Oscar Niemeyer - Agente de Visualização de Dados"
 sidebar_position: 15
 description: "Arquiteto de Visualizações - Agregação inteligente e geração de metadados visuais"
 ---
 
-# 🏗️ Oscar Niemeyer - Data Visualization Agent
+# 🏗️ Oscar Niemeyer - Agente de Visualização de Dados
 
 :::tip **Status: ✅ 80% Operacional (Beta - Sprint 6)**
 Implementação em `src/agents/oscar_niemeyer.py` (38KB, 18 métodos). Testes: 70.6% (12/17 passing - core features OK). **NOVIDADE Sprint 6**: Network Graphs + Choropleth Maps! 🗺️

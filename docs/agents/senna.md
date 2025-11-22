@@ -1,10 +1,10 @@
 ---
-title: "Ayrton Senna - Semantic Router"
+title: "Ayrton Senna - Roteador Semântico"
 sidebar_position: 10
 description: "Navegador das Rotas Perfeitas - Roteamento semântico inteligente de queries"
 ---
 
-# 🏎️ Ayrton Senna - Semantic Router
+# 🏎️ Ayrton Senna - Roteador Semântico
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
 Implementação completa em `src/agents/ayrton_senna.py` (22KB, ~12 métodos). Testes unitários ✅. Zero TODOs, zero NotImplementedError. Pronto para uso em produção com 95%+ de acurácia.
@@ -24,7 +24,7 @@ Implementação completa em `src/agents/ayrton_senna.py` (22KB, ~12 métodos). T
 
 > *"Being second is to be the first of the ones who lose."* - Ayrton Senna
 
-O Semantic Router embodies essa filosofia ao sempre buscar a decisão de roteamento mais precisa, garantindo que queries cheguem ao destino ótimo na primeira tentativa.
+O Roteador Semântico embodies essa filosofia ao sempre buscar a decisão de roteamento mais precisa, garantindo que queries cheguem ao destino ótimo na primeira tentativa.
 
 ---
 
@@ -584,7 +584,7 @@ print(response.data["routing_decision"]["target_agent"])
 ```mermaid
 graph TD
     U[Usuário - Query] -->|HTTP Request| API[Chat API]
-    API -->|Parse request| S[Senna - Semantic Router]
+    API -->|Parse request| S[Senna - Roteador Semântico]
 
     S -->|Alta confiança 0.9+| D1{Decisão: Route Direto}
     S -->|Média conf. 0.7-0.9| D2{Decisão: Route + Monitor}
@@ -832,7 +832,7 @@ router_config = {
 
 ### Comparação com Alternativas
 
-| Aspecto | Senna (Semantic Router) | LLM Direto (GPT-4) | Simple Regex | Hardcoded Rules |
+| Aspecto | Senna (Roteador Semântico) | LLM Direto (GPT-4) | Simple Regex | Hardcoded Rules |
 |---------|-------------------------|---------------------|--------------|-----------------|
 | **Velocidade** | ⚡ &lt;10ms | 🐌 1-2s | ⚡ &lt;1ms | ⚡ &lt;1ms |
 | **Acurácia** | 🎯 95% | 🎯 98% | ⚠️ 70% | ⚠️ 60% |

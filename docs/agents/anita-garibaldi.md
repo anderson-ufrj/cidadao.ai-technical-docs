@@ -1,10 +1,10 @@
 ---
-title: "Anita Garibaldi - Trend Analyst Agent"
+title: "Anita Garibaldi - Agente Analista de Tendências"
 sidebar_position: 5
 description: "Agente especializado em detecção avançada de padrões e análise de tendências em dados governamentais"
 ---
 
-# 📊 Anita Garibaldi - Trend Analyst Agent
+# 📊 Anita Garibaldi - Agente Analista de Tendências
 
 :::tip **Status: ✅ 100% Operacional**
 Implementado em `src/agents/anita.py` (61KB, 1405 linhas - **MAIOR AGENTE!**) com **~23 métodos funcionais**.
