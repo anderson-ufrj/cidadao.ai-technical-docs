@@ -265,6 +265,29 @@ spec:
 
 #### Railway Multi-Service Architecture
 
+**Visão Simplificada:**
+
+```mermaid
+flowchart LR
+    LB[Railway LB] --> WEB[4 Uvicorn<br/>Workers]
+    WEB --> QUEUE[5 Redis<br/>Queues]
+    QUEUE --> CELERY[4 Celery<br/>Workers]
+    BEAT[Celery Beat] --> QUEUE
+
+    style LB fill:#9C27B0,stroke:#6A1B9A,stroke-width:3px
+    style BEAT fill:#FF9800,stroke:#E65100,stroke-width:2px
+```
+
+**Componentes:**
+- **Load Balancer**: Railway Edge distribui entre 4 workers FastAPI
+- **Web Workers**: 4 processos Uvicorn (FastAPI)
+- **Task Queues**: 5 filas (Critical, High, Default, Low, Background)
+- **Celery Workers**: 4 workers processam tarefas assíncronas
+- **Beat Scheduler**: 1 instância agenda tarefas periódicas
+
+<details>
+<summary><strong>Ver arquitetura completa com todas as conexões e filas</strong></summary>
+
 ```mermaid
 graph TB
     subgraph "Railway Load Balancer"
@@ -319,6 +342,8 @@ graph TB
     style LB fill:#9C27B0,stroke:#6A1B9A,stroke-width:3px
     style Beat fill:#FF9800,stroke:#E65100,stroke-width:2px
 ```
+
+</details>
 
 **Load Distribution Strategy**:
 - **Railway Edge**: Distributes requests across Uvicorn workers
