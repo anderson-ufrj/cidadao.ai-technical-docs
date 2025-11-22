@@ -23,12 +23,9 @@
 /* 📚 TIPOGRAFIA CLEAN                         */
 /* ============================================ */
 
-/* Título principal com gradiente sutil apenas */
+/* Título principal sem gradiente - usa cor padrão do tema */
 h1 {
-  background: var(--brazil-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Removido gradiente brasileiro - usa estilo padrão do Docusaurus */
 }
 
 /* ============================================ */
@@ -48,10 +45,7 @@ h1 {
 /* ============================================ */
 
 .navbar__title {
-  background: var(--brazil-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* Removido gradiente brasileiro - usa estilo padrão do Docusaurus */
   font-weight: 700;
 }
 
