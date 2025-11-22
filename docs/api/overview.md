@@ -506,7 +506,3 @@ eventSource.addEventListener('complete', (e) => {
 2. Migrate from API keys to JWT
 3. Update error handling for new format
 4. Implement pagination for list endpoints
-
----
-
-Next: [Authentication →](./authentication.md)

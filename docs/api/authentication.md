@@ -492,4 +492,3 @@ async def test_full_authentication_flow():
 
 ---
 
-Next: [Endpoints Reference →](./endpoints/index.md)

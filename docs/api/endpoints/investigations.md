@@ -620,7 +620,3 @@ for anomaly in critical_anomalies:
 - **Set appropriate sensitivity** to balance accuracy vs performance
 - **Limit concurrent investigations** per user
 - **Cache investigation results** for repeated access
-
----
-
-Next: [Analysis API →](./analysis.md)
