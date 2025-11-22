@@ -7,7 +7,7 @@ import rehypeKatex from 'rehype-katex';
 const config: Config = {
   title: 'Cidadão.AI Backend',
   tagline: 'Sistema Multi-Agente para Transparência Pública Brasileira',
-  favicon: 'img/favicon.ico',
+  // favicon: 'img/favicon.ico', // TODO: Adicionar favicon customizado
 
   // Configurações de produção
   url: 'https://anderson-ufrj.github.io',
