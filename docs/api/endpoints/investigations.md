@@ -1,7 +1,7 @@
 ---
-title: "Investigations API"
+title: "API de Investigações"
 sidebar_position: 2
-description: "Complete reference for investigation endpoints - anomaly detection in government data"
+description: "Referência completa para endpoints de investigação - detecção de anomalias em dados governamentais"
 ---
 
 # Investigations API

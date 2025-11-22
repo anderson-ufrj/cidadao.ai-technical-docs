@@ -1,7 +1,7 @@
 ---
-title: "Documentação"
+title: "Fundamentos Matemáticos"
 sidebar_position: 1
-description: "Documentação técnica do Cidadão.AI"
+description: "Fundamentos matemáticos do Cidadão.AI - algoritmos, teoria da informação e análise espectral"
 ---
 
 # 🧮 Fundamentos Matemáticos — Visão Geral

@@ -493,8 +493,8 @@ Para saber mais sobre o pipeline:
 
 1. [**API Reference**](../api/visao-geral.md) - Documentação completa dos 323 endpoints
 2. [**Multi-Agent System**](./multi-agent-system.md) - Como os agentes consomem os dados
-3. [**Monitoring**](../monitoring/overview.md) - Métricas e dashboards
-4. [**Security**](../security/overview.md) - LGPD e compliance
+3. [**Monitoring**](../monitoramento/overview.md) - Métricas e dashboards
+4. [**Security**](../seguranca/overview.md) - LGPD e compliance
 
 ---
 

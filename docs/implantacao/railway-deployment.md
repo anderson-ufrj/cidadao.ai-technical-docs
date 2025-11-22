@@ -504,7 +504,7 @@ GET https://cidadao-api-production.up.railway.app/health
 ### 4. Custom Metrics (Prometheus)
 
 ```python
-# src/infrastructure/monitoring/metrics.py
+# src/infrastructu../monitoramento/metrics.py
 from prometheus_client import Counter, Histogram, Gauge
 
 # Request metrics

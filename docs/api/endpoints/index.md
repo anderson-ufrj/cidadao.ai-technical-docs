@@ -1,7 +1,7 @@
 ---
-title: "Endpoints Reference"
+title: "Referência de Endpoints"
 sidebar_position: 1
-description: "Complete reference for all API endpoints with examples and specifications"
+description: "Referência completa para todos os endpoints da API com exemplos e especificações"
 ---
 
 # Endpoints Reference

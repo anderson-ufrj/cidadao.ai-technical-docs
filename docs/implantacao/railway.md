@@ -1,5 +1,5 @@
 ---
-title: "Railway Deployment"
+title: "Implantação no Railway"
 sidebar_position: 1
 description: "Guia completo de deployment do Cidadão.AI no Railway com 99.9% de uptime"
 ---

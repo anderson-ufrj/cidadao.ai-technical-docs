@@ -1,7 +1,7 @@
 ---
-title: "Government APIs"
+title: "APIs Governamentais"
 sidebar_position: 4
-description: "30+ Brazilian government APIs integration for transparency data"
+description: "Integração com mais de 30 APIs governamentais brasileiras para dados de transparência"
 ---
 
 # 🏛️ Government APIs Integration

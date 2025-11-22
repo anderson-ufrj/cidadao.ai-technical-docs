@@ -1,7 +1,7 @@
 ---
 title: "Visão Geral do Sistema Multi-Agente"
 sidebar_position: 1
-description: "Comprehensive overview of the distributed multi-agent architecture"
+description: "Visão geral abrangente da arquitetura distribuída multi-agente"
 ---
 
 # Visão Geral do Sistema Multi-Agente

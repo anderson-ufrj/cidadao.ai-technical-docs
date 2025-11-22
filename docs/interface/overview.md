@@ -1,5 +1,5 @@
 ---
-title: "Frontend Overview"
+title: "Visão Geral do Frontend"
 sidebar_position: 1
 description: "Next.js 15 PWA - Interface web do Cidadão.AI"
 ---

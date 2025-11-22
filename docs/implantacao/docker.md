@@ -104,12 +104,12 @@ docker-compose -f config/docker/docker-compose.monitoring.yml down -v
 
 ### 3. Workers Only (Celery)
 
-**Arquivo**: `config/deployment/workers/docker-compose.workers-only.yml`
+**Arquivo**: `conf../implantacao/workers/docker-compose.workers-only.yml`
 
 **Uso**: Para escalar workers Celery independentemente do web service.
 
 ```bash
-docker-compose -f config/deployment/workers/docker-compose.workers-only.yml up -d
+docker-compose -f conf../implantacao/workers/docker-compose.workers-only.yml up -d
 ```
 
 ## Dockerfile Principal
@@ -662,11 +662,11 @@ docker network prune                   # Networks não usadas
 ### Documentação Relacionada
 - [Railway Deployment](./railway.md) - Deploy em produção (recomendado)
 - [Environment Variables](./variaveis-ambiente.md) - Configuração completa
-- [Monitoring](../monitoring/grafana.md) - Dashboards e métricas
+- [Monitoring](../monitoramento/grafana.md) - Dashboards e métricas
 
 ### Docker Resources
 - [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
-- [Docker Security](https://docs.docker.com/engine/security/)
+- [Docker Security](https://docs.docker.com/engi../seguranca/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
 ---

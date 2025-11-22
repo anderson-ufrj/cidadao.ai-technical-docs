@@ -1,5 +1,5 @@
 ---
-title: "ML Pipeline Overview"
+title: "Visão Geral do Pipeline ML"
 sidebar_position: 1
 description: "Comprehensive documentation of the machine learning pipeline for anomaly detection and analysis"
 ---

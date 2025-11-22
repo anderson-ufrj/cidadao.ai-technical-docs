@@ -1,7 +1,7 @@
 ---
-title: "Authentication"
+title: "Autenticação"
 sidebar_position: 2
-description: "Comprehensive guide to API authentication, authorization, and security"
+description: "Guia abrangente de autenticação, autorização e segurança da API"
 ---
 
 # Authentication

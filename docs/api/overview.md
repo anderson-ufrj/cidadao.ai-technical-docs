@@ -1,7 +1,7 @@
 ---
-title: "API Overview"
+title: "Visão Geral da API"
 sidebar_position: 1
-description: "Comprehensive technical overview of the Cidadão.AI REST API architecture"
+description: "Visão geral técnica abrangente da arquitetura da API REST do Cidadão.AI"
 ---
 
 # API Overview

@@ -1,5 +1,5 @@
 ---
-title: "System Design and Architecture"
+title: "Design e Arquitetura do Sistema"
 sidebar_position: 2
 description: "Comprehensive architectural documentation of the Cidadão.AI multi-agent system"
 ---

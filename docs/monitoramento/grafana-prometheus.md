@@ -247,7 +247,7 @@ groups:
 
 ### prometheus.yml
 
-**Location**: `config/docker/monitoring/prometheus/prometheus.yml`
+**Location**: `config/dock../monitoramento/prometheus/prometheus.yml`
 
 ```yaml
 global:
@@ -353,7 +353,7 @@ open http://localhost:3000
 
 # 4. Importar Dashboards
 # Dashboards → Import → Upload JSON file
-# Usar arquivos em: config/docker/monitoring/grafana/dashboards/
+# Usar arquivos em: config/dock../monitoramento/grafana/dashboards/
 ```
 
 ### Dashboard JSON (Exemplo)
@@ -468,7 +468,7 @@ receivers:
 ### Implementação no Código
 
 ```python
-# src/infrastructure/monitoring/metrics.py
+# src/infrastructu../monitoramento/metrics.py
 from prometheus_client import Counter, Histogram, Gauge
 
 # Counters
@@ -600,7 +600,7 @@ global:
 ## Recursos Adicionais
 
 ### Documentação Relacionada
-- [Docker Setup](../deployment/docker.md) - Monitoring stack
+- [Docker Setup](../implantacao/docker.md) - Monitoring stack
 - [Architecture](../architecture/overview.md) - Sistema completo
 - [API](../api/overview.md) - Endpoints monitorados
 

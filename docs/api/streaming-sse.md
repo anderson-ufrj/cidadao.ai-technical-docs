@@ -1,7 +1,7 @@
 ---
-title: "Real-Time Streaming"
+title: "Streaming em Tempo Real"
 sidebar_position: 3
-description: "Server-Sent Events (SSE) and WebSocket implementation for real-time agent communication"
+description: "Implementação de Server-Sent Events (SSE) e WebSocket para comunicação em tempo real com agentes"
 ---
 
 # 🌊 Real-Time Streaming

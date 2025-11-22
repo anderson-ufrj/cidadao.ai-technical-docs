@@ -721,8 +721,8 @@ Para entender melhor a arquitetura:
 1. [**Multi-Agent System**](./multi-agent-system.md) - Deep dive nos 17 agentes
 2. [**Data Pipeline**](./data-pipeline.md) - Fluxo de dados e ETL
 3. [**API Reference**](../api/visao-geral.md) - Documentação completa dos 323 endpoints
-4. [**Deployment Guide**](../deployment/deployment-guide.md) - Guia de deployment Railway
-5. [**Monitoring Setup**](../monitoring/overview.md) - Configuração Grafana + Prometheus
+4. [**Deployment Guide**](../implantacao/deployment-guide.md) - Guia de deployment Railway
+5. [**Monitoring Setup**](../monitoramento/overview.md) - Configuração Grafana + Prometheus
 
 ---
 
