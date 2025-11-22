@@ -66,6 +66,43 @@ Drummond está em beta (não 100%) devido a uma limitação técnica no HuggingF
 
 ## 🧠 Arquitetura do Sistema
 
+### Visão Simplificada do Fluxo
+
+```mermaid
+graph LR
+    USER[👤 Usuário] --> API[🌐 API]
+    API --> SENNA[🏎️ Senna<br/>Router]
+    SENNA --> ABAPORU[🎨 Abaporu<br/>Orchestrator]
+    ABAPORU --> INV[🔍 Investigação<br/>3 agentes]
+    ABAPORU --> ANA[📊 Análise<br/>4 agentes]
+    ABAPORU --> PROC[📝 Processamento<br/>3 agentes]
+    INV --> COM[📢 Comunicação<br/>3 agentes]
+    ANA --> COM
+    PROC --> COM
+    COM --> USER
+
+    style SENNA fill:#FFD700,color:#000
+    style ABAPORU fill:#E91E63,color:#fff
+    style INV fill:#4CAF50,color:#fff
+    style ANA fill:#2196F3,color:#fff
+    style COM fill:#FF9800,color:#fff
+```
+
+### Hierarquia de Camadas
+
+| Camada | Agentes | Função Principal |
+|--------|---------|------------------|
+| 🏎️ **Roteamento** | Senna (1) | Roteamento inteligente &lt;10ms |
+| 🎨 **Orquestração** | Abaporu (1) | Coordenação multi-agente |
+| 🔍 **Investigação** | Zumbi, Oxóssi, Obaluaiê (3) | Detecção de anomalias, fraudes, corrupção |
+| 📊 **Análise** | Anita, Lampião, Bonifácio, Ceuci (4) | Trends, regional, políticas, predição |
+| 📝 **Processamento** | Machado, Dandara, M. Quitéria (3) | NER, equidade, segurança |
+| 📢 **Comunicação** | Tiradentes, Drummond, Oscar (3) | Reports, alertas, visualizações |
+| 🧠 **Suporte** | Nanã, Deodoro (2) | Memória, infraestrutura |
+
+<details>
+<summary><strong>Ver arquitetura completa com todos os agentes e conexões detalhadas</strong></summary>
+
 ```mermaid
 graph TB
     subgraph "🎯 Camada de Entrada"
@@ -150,6 +187,8 @@ graph TB
     style NANA fill:#9C27B0,color:#fff
     style DRUMMOND fill:#FFC107,color:#000
 ```
+
+</details>
 
 ---
 
