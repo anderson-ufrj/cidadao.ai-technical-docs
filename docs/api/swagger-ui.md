@@ -10,24 +10,41 @@ Explore e teste todos os endpoints da API do Cidadão.AI diretamente no navegado
 
 ## 📊 Interface Interativa
 
-<iframe 
-  src="https://petstore.swagger.io/?url=https://raw.githubusercontent.com/anderson-ufrj/cidadao.ai-backend/main/openapi.json"
-  width="100%" 
-  height="600px" 
-  frameBorder="0"
-  title="Cidadão.AI API Documentation"
->
-</iframe>
+A API do Cidadão.AI possui Swagger UI nativo integrado. Acesse a interface interativa completa diretamente no backend:
+
+<div style={{padding: '20px', background: '#f0f9ff', borderRadius: '8px', border: '2px solid #0ea5e9'}}>
+  <h3 style={{margin: '0 0 15px 0', color: '#0369a1'}}>🚀 Swagger UI Oficial</h3>
+  <p style={{margin: '0 0 15px 0'}}>
+    Acesse a interface interativa completa da API em produção:
+  </p>
+  <a
+    href="https://cidadao-api-production.up.railway.app/docs"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{
+      display: 'inline-block',
+      padding: '12px 24px',
+      background: '#0ea5e9',
+      color: 'white',
+      textDecoration: 'none',
+      borderRadius: '6px',
+      fontWeight: 'bold'
+    }}
+  >
+    📖 Abrir Swagger UI Interativo →
+  </a>
+</div>
 
 :::tip Dica
-Você pode testar diretamente os endpoints usando a interface acima. Clique em "Try it out" para fazer requisições reais.
+Na interface Swagger UI, você pode testar diretamente todos os endpoints. Clique em "Try it out" para fazer requisições reais à API em produção.
 :::
 
 ## 🚀 Links Diretos
 
-- **📄 OpenAPI Spec**: [Download JSON](https://raw.githubusercontent.com/anderson-ufrj/cidadao.ai-backend/main/openapi.json)
-- **🌐 Swagger UI**: [Interface Completa](https://petstore.swagger.io/?url=https://raw.githubusercontent.com/anderson-ufrj/cidadao.ai-backend/main/openapi.json)
-- **📚 Redoc**: [Documentação Alternativa](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/anderson-ufrj/cidadao.ai-backend/main/openapi.json)
+- **🌐 Swagger UI (Produção)**: [https://cidadao-api-production.up.railway.app/docs](https://cidadao-api-production.up.railway.app/docs)
+- **📋 ReDoc (Produção)**: [https://cidadao-api-production.up.railway.app/redoc](https://cidadao-api-production.up.railway.app/redoc)
+- **📄 OpenAPI Spec (JSON)**: [https://cidadao-api-production.up.railway.app/openapi.json](https://cidadao-api-production.up.railway.app/openapi.json)
+- **📚 Redoc Externo**: [Documentação Alternativa](https://redocly.github.io/redoc/?url=https://cidadao-api-production.up.railway.app/openapi.json)
 
 ## 🔑 Autenticação
 
