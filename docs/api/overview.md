@@ -8,7 +8,15 @@ description: "Comprehensive technical overview of the Cidadão.AI REST API archi
 
 ## Architecture
 
-The Cidadão.AI API is built on a **microservice-oriented architecture** using FastAPI, designed for high performance, scalability, and real-time data processing. The system implements a **layered architecture pattern** with clear separation of concerns.
+The Cidadão.AI API is built on **FastAPI** with a **multi-agent architecture**, designed for high performance, scalability, and real-time data processing. The system implements a **layered architecture pattern** with clear separation of concerns.
+
+### Production Deployment
+- **Platform**: Railway (Web + Worker + Beat services)
+- **Status**: ✅ 99.9% uptime since October 2025
+- **Endpoints**: **323 REST endpoints** across **36 route modules**
+- **Performance**: 80ms p50 latency, 145ms p95 latency
+- **Database**: PostgreSQL (Supabase) + Redis Cache
+- **LLM Provider**: Maritaca AI (primary), Anthropic Claude (backup)
 
 ### Core Components
 
@@ -35,6 +43,64 @@ graph TB
     ML --> Vector
 ```
 
+## API Endpoints
+
+### Endpoint Overview
+
+The Cidadão.AI API provides **323 REST endpoints** organized into **36 specialized route modules**:
+
+#### Core Routes (7 modules)
+1. **`/api/v1/chat/`** - Chat with agents (SSE streaming) - 18 endpoints
+2. **`/api/v1/agents/`** - Direct agent invocation - 18 endpoints
+3. **`/api/v1/investigations/`** - Investigation CRUD - 10 endpoints
+4. **`/api/v1/federal/`** - Federal APIs (IBGE, DataSUS, INEP, PNCP) - 7 endpoints
+5. **`/api/v1/orchestration/`** - Multi-agent orchestration - 7 endpoints
+6. **`/api/v1/transparency/`** - Portal da Transparência - 6 endpoints
+7. **`/health/metrics`** - Prometheus metrics endpoint - 1 endpoint
+
+#### Additional Routes (29 modules)
+- **Admin**: `/api/v1/admin/*` (users, roles, settings, audit)
+- **Analytics**: `/api/v1/analysis`, `/api/v1/reports`, `/api/v1/export`
+- **Integration**: `/api/v1/oauth`, `/api/v1/webhooks`, `/api/v1/graphql`
+- **Infrastructure**: `/api/v1/tasks`, `/api/v1/resilience`, `/api/v1/observability`
+- **Advanced**: `/api/v1/ml_pipeline`, `/api/v1/visualization`, `/api/v1/network`
+- **Testing**: `/api/v1/debug`, `/api/v1/chaos`
+
+### Key Endpoint Examples
+
+```python
+# Chat with agents (SSE streaming)
+POST /api/v1/chat/stream
+GET  /api/v1/chat/history
+
+# Direct agent invocation
+POST /api/v1/agents/zumbi/investigate
+POST /api/v1/agents/abaporu/orchestrate
+GET  /api/v1/agents/status
+
+# Investigations
+POST   /api/v1/investigations
+GET    /api/v1/investigations/{id}
+GET    /api/v1/investigations/{id}/progress
+DELETE /api/v1/investigations/{id}
+
+# Federal data sources
+GET /api/v1/federal/ibge/demographics
+GET /api/v1/federal/datasus/health-metrics
+GET /api/v1/federal/inep/education-stats
+GET /api/v1/federal/pncp/contracts
+
+# Transparency Portal
+GET /api/v1/transparency/contracts
+GET /api/v1/transparency/expenses
+GET /api/v1/transparency/agreements
+
+# Health & Metrics
+GET /health
+GET /health/detailed
+GET /metrics  # Prometheus format
+```
+
 ## Technical Specifications
 
 ### Protocol & Standards
@@ -45,10 +111,12 @@ graph TB
 - **Documentation**: OpenAPI 3.0 Specification
 
 ### Performance Characteristics
-- **Response Time**: p95 < 100ms, p99 < 500ms
-- **Throughput**: 10,000+ requests/second
-- **Concurrency**: Async/await with connection pooling
-- **Caching**: Multi-layer (Redis + In-memory)
+- **Response Time**: p50 80ms, p95 145ms, p99 < 500ms
+- **Throughput**: 5,000+ requests/second (production verified)
+- **Concurrency**: Async/await with connection pooling (max 100 connections)
+- **Caching**: Multi-layer (L1: Memory 5min, L2: Redis 1h, L3: PostgreSQL 24h)
+- **Cache Hit Rate**: 87% in production
+- **Agent Processing**: p95 < 3.2s for multi-agent investigations
 
 ## API Lifecycle
 
@@ -76,12 +144,23 @@ sequenceDiagram
 
 ### Middleware Stack
 
-1. **CORS Middleware**: Cross-origin resource sharing
-2. **Security Middleware**: Headers, XSS protection
-3. **Authentication Middleware**: JWT validation
-4. **Rate Limiting Middleware**: Token bucket algorithm
-5. **Logging Middleware**: Structured JSON logs
-6. **Error Handling Middleware**: Consistent error responses
+**Execution Order** (FastAPI uses LIFO - Last In, First Out):
+
+1. **IPWhitelistMiddleware** (production only) - IP filtering
+2. **CORSMiddleware** - Cross-origin resource sharing
+3. **LoggingMiddleware** - Structured JSON logs with request IDs
+4. **SecurityMiddleware** - CSRF, XSS protection, security headers
+5. **RateLimitMiddleware** - Per-user/IP limits (token bucket)
+6. **CompressionMiddleware** - Gzip response compression
+7. **CorrelationMiddleware** - Distributed tracing (request ID propagation)
+8. **MetricsMiddleware** - Prometheus metrics collection
+
+**Key Features**:
+- Request correlation IDs for distributed tracing
+- Automatic Prometheus metrics (latency, requests, errors)
+- Rate limiting: 100/hour (anonymous), 1000/hour (authenticated)
+- Security headers: HSTS, CSP, X-Frame-Options
+- Compression: Gzip for responses >1KB
 
 ## Data Models
 
@@ -334,6 +413,67 @@ if status.completed:
     results = client.investigations.get_results(investigation.id)
     print(f"Found {results.anomalies_found} anomalies")
 ```
+
+## Server-Sent Events (SSE) Streaming
+
+### Real-Time Chat with Agents
+
+The chat system uses **SSE (Server-Sent Events)** for real-time streaming responses:
+
+```python
+# Endpoint
+POST /api/v1/chat/stream
+
+# Request
+{
+  "message": "Analise contratos do Ministério da Saúde em 2024",
+  "agent_name": "abaporu",  # or "auto" for automatic routing
+  "stream": true
+}
+
+# Response (SSE stream)
+event: thinking
+data: {"status": "processing", "agent": "abaporu"}
+
+event: chunk
+data: {"content": "Iniciando investigação com Zumbi..."}
+
+event: chunk
+data: {"content": "15 anomalias detectadas..."}
+
+event: complete
+data: {"status": "completed", "anomalies": 15, "confidence": 0.89}
+```
+
+### SSE Client Example
+
+```javascript
+const eventSource = new EventSource('/api/v1/chat/stream');
+
+eventSource.addEventListener('thinking', (e) => {
+    const data = JSON.parse(e.data);
+    console.log('Agent thinking:', data.agent);
+});
+
+eventSource.addEventListener('chunk', (e) => {
+    const data = JSON.parse(e.data);
+    appendToChat(data.content);  // Update UI with partial results
+});
+
+eventSource.addEventListener('complete', (e) => {
+    const data = JSON.parse(e.data);
+    console.log('Investigation complete:', data);
+    eventSource.close();
+});
+```
+
+### Benefits of SSE over WebSocket
+
+- ✅ **Simpler**: HTTP-based, no special protocol
+- ✅ **Auto-reconnect**: Built-in reconnection handling
+- ✅ **Efficient**: One-way communication (server → client)
+- ✅ **Compatible**: Works with HTTP/2 multiplexing
+- ⚠️ **Limitation**: One-way only (use WebSocket for bidirectional)
 
 ## Best Practices
 
