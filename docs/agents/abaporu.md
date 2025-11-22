@@ -7,7 +7,9 @@ description: "Agente orquestrador central do sistema multi-agente"
 # 🎨 Abaporu - Master Agent
 
 :::tip **Status: ✅ 100% Operacional (Produção)**
-Implementado em `src/agents/abaporu.py` com capacidades completas de orquestração e auto-reflexão.
+Implementado em `src/agents/abaporu.py` (1.247 linhas) com **86% de cobertura de testes**.
+Herda de `ReflectiveAgent` com quality threshold 0.8 e max 3 reflection iterations.
+Produção desde outubro/2025 via Railway - **Master Orchestrator** do sistema.
 :::
 
 ## 📋 Visão Geral
@@ -178,10 +180,13 @@ async def pipeline_investigation(self, stages):
 ### KPIs Operacionais
 | Métrica | Valor | Meta | Status |
 |---------|-------|------|--------|
+| **Cobertura de Testes** | 86% | >80% | ✅ Tier 2 |
 | Taxa de Sucesso | 94% | >90% | ✅ |
-| Tempo Médio (investigação) | 98s | &lt;120s | ✅ |
-| Reflexões Necessárias | 12% | &lt;15% | ✅ |
+| Tempo Médio (investigação) | 98s | <120s | ✅ |
+| Reflexões Necessárias | 12% | <15% | ✅ |
 | Qualidade Média | 0.91 | >0.85 | ✅ |
+| **Reflection Threshold** | 0.8 | - | ⚙️ Auto-melhoria |
+| **Max Iterations** | 3 | - | ⚙️ Quality control |
 
 ### Estatísticas de Uso
 ```python
@@ -339,6 +344,66 @@ exploration_mode = {
 }
 ```
 
+## 🏗️ Herança e Arquitetura
+
+### Relação com Deodoro
+
+Abaporu herda de **ReflectiveAgent** (definido em `src/agents/deodoro.py`):
+
+```python
+class MasterAgent(ReflectiveAgent):
+    """
+    Master Orchestrator - herda todas as capacidades do Deodoro.
+
+    Funcionalidades herdadas:
+    - Quality threshold: 0.8 (80% de confiança mínima)
+    - Max reflection loops: 3 (até 3 iterações de melhoria)
+    - Retry logic com exponential backoff
+    - State management (IDLE → THINKING → ACTING → COMPLETED)
+    - Prometheus metrics integration
+    - Structured logging
+    """
+```
+
+**Capacidades Exclusivas do Abaporu**:
+- 🎼 **Orquestração multi-agente** (coordena 16 agentes)
+- 🧠 **Planejamento estratégico** (decompõe tarefas complexas)
+- 🔄 **Síntese de resultados** (agrega outputs de múltiplos agentes)
+- 📊 **Gestão de prioridades** (otimiza ordem de execução)
+- 🎯 **Balanceamento de carga** (distribui trabalho eficientemente)
+
+**Padrão de Coordenação**:
+1. 📋 **Plan**: Analisa escopo e cria plano de investigação
+2. 🎯 **Delegate**: Seleciona e distribui tarefas aos agentes especializados
+3. 📊 **Collect**: Agrega resultados de múltiplos agentes
+4. 🔄 **Reflect**: Avalia qualidade e replanja se necessário (< 0.8)
+5. 📝 **Synthesize**: Consolida insights e gera relatório final
+
+### Arquitetura de Coordenação
+
+```mermaid
+graph TB
+    USER[👤 Usuário] -->|Solicitação| ABAPORU[👑 Abaporu<br/>Master Orchestrator]
+    SENNA[🎯 Senna<br/>Router] -->|Route to Master| ABAPORU
+
+    ABAPORU -->|Delegate Investigation| ZUMBI[⚔️ Zumbi<br/>Anomaly Detective]
+    ABAPORU -->|Delegate Analysis| ANITA[📊 Anita<br/>Data Analyst]
+    ABAPORU -->|Fetch Context| NANA[🧠 Nanã<br/>Memory]
+    ABAPORU -->|Generate Report| TIRADENTES[📝 Tiradentes<br/>Reporter]
+
+    ZUMBI -->|Anomalies| ABAPORU
+    ANITA -->|Patterns| ABAPORU
+    NANA -->|Historical Data| ABAPORU
+    TIRADENTES -->|Report| ABAPORU
+
+    ABAPORU -->|Synthesized Result| USER
+
+    DB[(🗄️ PostgreSQL)] -->|Investigation State| ABAPORU
+    CACHE[(⚡ Redis)] -->|Cached Plans| ABAPORU
+    ABAPORU -->|Store Progress| DB
+    ABAPORU -->|Metrics| PROM[📊 Prometheus]
+```
+
 ## 📚 Melhores Práticas
 
 ### Para Desenvolvedores
@@ -383,6 +448,34 @@ ws.onmessage = (event) => {
 };
 ```
 
+## 📚 Referências
+
+### Documentação Relacionada
+- [Deodoro - Base Framework](./deodoro.md) - Classe base que Abaporu herda
+- [Arquitetura Multi-Agente](../architecture/multi-agent-system.md)
+- [Pipeline de Dados](../architecture/data-pipeline.md)
+- [Visão Geral dos Agentes](./overview.md)
+
+### Cultural
+- **Abaporu** (1928) - Obra icônica de Tarsila do Amaral
+- **Antropofagia**: Movimento cultural brasileiro de "devorar" influências externas
+- **Legado**: Transformação criativa de dados brutos em insights únicos
+
+### Técnicas
+- **Master-Slave Pattern**: Coordenação centralizada de agentes
+- **MapReduce**: Distribuição paralela e agregação de resultados
+- **Reflective Architecture**: Auto-avaliação e melhoria contínua
+- **Pipeline Orchestration**: Sequenciamento inteligente de tarefas
+
 ---
 
+**Anterior:** [🏛️ Deodoro - Base Framework ←](./deodoro.md)
 **Próximo:** [🔍 Zumbi dos Palmares - Investigator Agent →](./zumbi.md)
+
+---
+
+**Última Atualização**: 2025-01-22
+**Status**: ✅ Tier 2 - 86% Coverage
+**Autor**: Anderson Henrique da Silva
+
+> **💡 Destaque**: Abaporu é o **Master Orchestrator** que coordena todos os 16 agentes operacionais! 🎨
