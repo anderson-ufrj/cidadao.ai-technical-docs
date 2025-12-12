@@ -2,6 +2,7 @@
 
 > **Documentação técnica oficial** do sistema multi-agente Cidadão.AI para análise de transparência pública brasileira.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17911837.svg)](https://doi.org/10.5281/zenodo.17911837)
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-v3.6.3-brightgreen?logo=docusaurus)](https://docusaurus.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![KaTeX](https://img.shields.io/badge/KaTeX-Math-orange?logo=latex)](https://katex.org/)
